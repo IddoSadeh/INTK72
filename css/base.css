@@ -1,0 +1,30 @@
+/* base.css */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../assets/FormaTEXTTEST.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* 16px base */
+}
+
+body {
+  font-family: 'CustomFont', sans-serif;
+  color: #000;
+  overflow-x: hidden;
+  padding: 2rem;
+  padding-bottom: 4rem; /* space for fixed footer */
+}
+
+/* Utility for full-viewport sections */
+.vh-100 {
+  height: 100vh;
+}

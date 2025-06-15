@@ -1,0 +1,126 @@
+/* userid.css */
+
+/* Container: 3 cols (intro / form / submit) */
+.user-id-page {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 2rem;
+  align-items: start;
+}
+
+/* Intro text in col 1 */
+.user-id-page .intro {
+  grid-column: 1;
+}
+.user-id-page .intro h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.user-id-page .intro p {
+  font-size: 1rem; line-height: 1.5;
+}
+
+/* Form in col 2 */
+.user-id-form {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Uniform input/select styling */
+.user-id-form input,
+.user-id-form select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background: transparent;
+}
+
+/* First & Last */
+.user-id-form input[name="firstName"] { grid-column: 1; }
+.user-id-form input[name="lastName"]  { grid-column: 2; }
+
+/* Email & Origin */
+.user-id-form input[name="email"]    { grid-column: 1; }
+.user-id-form select[name="origin"]  { grid-column: 2; }
+
+/* Phone spans both columns, with slim input */
+.phone-group {
+  grid-column: 1 / span 2;
+  display: flex;
+  gap: 0.5rem;
+}
+.phone-group select     { flex: 0 0 4rem; }
+.phone-group input[type="tel"] { flex: 1; max-width: 12rem; }
+
+/* DOB label spans both columns */
+.dob-label {
+  grid-column: 1 / span 2;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* DOB inputs in col 1 */
+.dob-group {
+  grid-column: 1;
+  display: flex;
+  gap: 0.5rem;
+}
+.dob-group input {
+  flex: 1;
+  text-align: center;
+}
+
+/* Gender buttons in col 2, same row as DOB */
+.gender-group {
+  grid-column: 2;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.gender-btn {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Submit block in col 3 */
+.submit-block {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.submit-block .btn {
+  width: fit-content;
+}
+.submit-block .terms {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.submit-block .terms a {
+  color: red;
+  text-decoration: none;
+}
+
+/* Collapse to one column < 800px */
+@media (max-width: 800px) {
+  .user-id-page {
+    grid-template-columns: 1fr;
+  }
+  .user-id-page > * {
+    grid-column: 1 / -1;
+  }
+}
