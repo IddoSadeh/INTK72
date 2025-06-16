@@ -29,12 +29,11 @@
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border: 0.125rem solid orange;
-  color: #000;
-  text-transform: uppercase;
-  text-decoration: none; 
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 2.5rem;
+  padding: 0 1rem;
   font-size: 1rem;
 }

@@ -1,28 +1,21 @@
-/* userid.css */
+/* css/userid.css */
 
-/* Container: 3 cols (intro / form / submit) */
+/* Container: intro | form | submit */
 .user-id-page {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  gap: 2rem;
+  gap: 1rem 2rem;
   margin-top: 4rem;
   padding: 2rem;
   align-items: start;
 }
 
-/* Intro text in col 1 */
+/* Intro (col 1) */
 .user-id-page .intro {
   grid-column: 1;
 }
-.user-id-page .intro h1 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  line-height: 1.1; margin-bottom: 1rem;
-}
-.user-id-page .intro p {
-  font-size: 1rem; line-height: 1.5;
-}
 
-/* Form in col 2 */
+/* Form (col 2) */
 .user-id-form {
   grid-column: 2;
   display: grid;
@@ -30,92 +23,174 @@
   gap: 1rem;
 }
 
-/* Uniform input/select styling */
-.user-id-form input,
+/* 1. Uniform, rectangular inputs & selects with black outline “shadow” */
+.user-id-form input[type="text"],
+.user-id-form input[type="email"],
+.user-id-form input[type="tel"],
+.user-id-form input[type="number"],
 .user-id-form select {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #000;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  background: transparent;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: none;
+  box-shadow: 0 0 0 1px #000;      /* black outline */
+  border-radius: 0;                /* no rounding */
+  font-size: 0.875rem;
+  color: #333;
+  background: #fff;
+  transition: box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
-/* First & Last */
-.user-id-form input[name="firstName"] { grid-column: 1; }
-.user-id-form input[name="lastName"]  { grid-column: 2; }
+/* 2. Hover & active states */
+.user-id-form input:hover,
+.user-id-form select:hover {
+  box-shadow: 0 0 0 1px #f90;      /* light orange on hover */
+}
+.user-id-form input:active,
+.user-id-form select:active,
+.user-id-form input:focus,
+.user-id-form select:focus {
+  box-shadow: 0 0 0 1px orange;    /* orange on click/focus */
+  outline: none;
+}
 
-/* Email & Origin */
-.user-id-form input[name="email"]    { grid-column: 1; }
-.user-id-form select[name="origin"]  { grid-column: 2; }
+/* 3. Custom arrow on selects, positioned left */
+.user-id-form select {
+  appearance: none;
+  background-image:
+    url("data:image/svg+xml;charset=US-ASCII,\<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'>\<path fill='%23333' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: left 0.75rem center;
+  background-size: 0.625rem;
+  padding-left: 2rem;               /* make room for arrow */
+}
 
-/* Phone spans both columns, with slim input */
-.phone-group {
+/* 4. Phone spans both form columns, area-code larger & dark arrow */
+.user-id-form .phone-group {
   grid-column: 1 / span 2;
   display: flex;
   gap: 0.5rem;
 }
-.phone-group select     { flex: 0 0 4rem; }
-.phone-group input[type="tel"] { flex: 1; max-width: 12rem; }
-
-/* DOB label spans both columns */
-.dob-label {
-  grid-column: 1 / span 2;
-  font-weight: bold;
-  margin-top: 1rem;
+.user-id-form .phone-group select {
+  flex: 0 0 5rem;                   /* slightly larger */
+  box-shadow: 0 0 0 1px #000;
+  border-radius: 0;
+  color: #777;
+  background-image:
+    url("data:image/svg+xml;charset=US-ASCII,\<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'>\<path fill='%23777' d='M0 0l5 6 5-6z'/></svg>");
+  background-position: left 0.5rem center;
+  padding-left: 1.75rem;
+}
+.user-id-form .phone-group select:hover {
+  box-shadow: 0 0 0 1px #f90;
+}
+.user-id-form .phone-group select:active,
+.user-id-form .phone-group select:focus {
+  box-shadow: 0 0 0 1px orange;
+  outline: none;
+}
+.user-id-form .phone-group input {
+  flex: 0 0 14rem;                  /* 2/3 of previous width */
+  box-shadow: 0 0 0 1px #000;
+  border-radius: 0;
+}
+.user-id-form .phone-group input:hover {
+  box-shadow: 0 0 0 1px #f90;
+}
+.user-id-form .phone-group input:active,
+.user-id-form .phone-group input:focus {
+  box-shadow: 0 0 0 1px orange;
+  outline: none;
 }
 
-/* DOB inputs in col 1 */
-.dob-group {
+/* 5. DOB label spans both form columns */
+.user-id-form .dob-label {
+  grid-column: 1 / span 2;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+/* 6. DOB inputs in form column 1 */
+.user-id-form .dob-group {
   grid-column: 1;
   display: flex;
   gap: 0.5rem;
 }
-.dob-group input {
-  flex: 1;
+.user-id-form .dob-group input {
+  width: 4rem;
+  height: 2.5rem;
+  padding: 0;
   text-align: center;
+  box-shadow: 0 0 0 1px #000;
+  border-radius: 0;
+  background: #fff;
+}
+.user-id-form .dob-group input:hover {
+  box-shadow: 0 0 0 1px #f90;
+}
+.user-id-form .dob-group input:active,
+.user-id-form .dob-group input:focus {
+  box-shadow: 0 0 0 1px orange;
+  outline: none;
 }
 
-/* Gender buttons in col 2, same row as DOB */
-.gender-group {
+/* 7. Gender in form column 2, same row as DOB */
+.user-id-form .gender-group {
   grid-column: 2;
   display: flex;
   gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
 }
-.gender-btn {
+.user-id-form .gender-group .gender-btn {
   flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #000;
-  background: transparent;
-  text-transform: uppercase;
+  height: 2.5rem;
+  box-shadow: 0 0 0 1px #000;
+  border: none;
+  border-radius: 0;
+  background: #fff;
   font-size: 0.875rem;
+  text-transform: uppercase;
   cursor: pointer;
 }
+.user-id-form .gender-group .gender-btn:hover {
+  box-shadow: 0 0 0 1px #f90;
+}
+.user-id-form .gender-group .gender-btn:active {
+  box-shadow: 0 0 0 1px orange;
+}
 
-/* Submit block in col 3 */
-.submit-block {
+/* 8. Submit block (col 3) - matches primary .btn style */
+.user-id-page .submit-block {
   grid-column: 3;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.submit-block .btn {
+.user-id-page .submit-block .btn {
   width: fit-content;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
 }
-.submit-block .terms {
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+
+
+/* 9. Terms & Conditions, single line, normal weight */
+.user-id-page .submit-block .terms {
+  font-size: 0.625rem;
+  font-weight: normal !important;
+  white-space: nowrap;
+  margin: 0;
 }
-.submit-block .terms a {
+.user-id-page .submit-block .terms input {
+  margin: 0;
+}
+.user-id-page .submit-block .terms a {
   color: red;
   text-decoration: none;
 }
 
-/* Collapse to one column < 800px */
+/* 10. Collapse to one column on narrow screens */
 @media (max-width: 800px) {
   .user-id-page {
     grid-template-columns: 1fr;
