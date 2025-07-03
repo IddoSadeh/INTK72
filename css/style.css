@@ -1,172 +1,161 @@
-/* load your custom OTF font */
-@font-face {
-  font-family: 'CustomFont';
-  src: url('../assets/FormaTEXTTEST.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* --- Basic Reset and Page Setup --- */
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html {
-  /* base font size 16px; users can adjust */
-  font-size: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
-  padding: 2rem;            /* all-around gutter */
-  padding-bottom: 2rem;     /* footer space */
-  font-family: 'CustomFont', sans-serif;
-  color: #000;
-  overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    background-color: #ffffff;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    /* Scale everything down slightly for large screens */
+    font-size: 0.9rem;
 }
 
-/* Header */
-.site-header {
-  position: absolute;
-  top: 0; left: 0; width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  z-index: 2;
+.container {
+    width: 100%;
+    padding: 6vh 3vw 2vh 8vw;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.site-header .logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-.logo-img {
-  width: clamp(1.5rem, 4vw, 2rem);
-  height: auto;
-  margin-right: 0.5rem;
-  margin-left: 2rem;
-}
-
-/* Hamburger */
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 2rem;       /* instead of 24px */
-  height: 1.5rem;    /* instead of 18px */
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.hamburger span {
-  display: block;
-  height: 0.25rem;   /* instead of 3px */
-  background: orange;
-  border-radius: 0.125rem;
-}
-
-/* Mobile nav */
-.nav-links {
-  position: absolute;
-  top: 100%;
-  right: 2rem;
-  display: none;
-  flex-direction: column;
-  background: rgba(255,255,255,0.9);
-  padding: 1rem;
-}
-.nav-links a {
-  margin: 0.5rem 0;
-  text-decoration: none;
-  color: #000;
-}
-.nav-links.active {
-  display: flex;
-}
-
-/* Hero */
-.hero {
-  position: relative;
-  padding-top: 4rem; /* room for header */
-  height: calc(100vh - 4rem);
-  overflow: hidden;
+/* Keep content left aligned; no auto centering */
+header,
+.content-wrapper,
+footer {
+    max-width: 700px;
 }
 
 
-#bg-video {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  
-  transform: translate(15%, -10%);
-  z-index: 1;
- 
+/* --- Content Styling --- */
+
+header {
+    margin-bottom: 12vh;
 }
 
-/* Hero content */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 80vw;    /* fluid width */
-  padding: 2rem;
-}
-.hero-content h1 {
-  /* fluid font size: between 2rem and 4rem, scaling with viewport */
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    letter-spacing: 0.008em;
+    transform-origin: top left;
+    font-weight: 525;
+    margin-bottom: 1.5vh;
 }
 
-/* Button */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem; /* OK in rem */
-  border: 0.125rem solid orange; /* 2px = 0.125rem */
-  color: #000;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1rem;
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
 }
 
-/* Footer */
-.site-footer {
-  position: fixed;
-  bottom: 0; left: 0;
-  width: 100%;
-  padding: 1rem 2rem;  /* fluid padding */
-  background: #f8f8f8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  z-index: 2;
+nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2.5vh;
+    gap: 3vw;
 }
 
-.site-footer small {
-  font-size: 0.875rem;
+nav a {
+    color: inherit;
+    text-decoration: none;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    border-bottom: 3px solid #000;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    transform-origin: bottom left;
+    display: inline-block;
+    line-height: 1;
 }
 
-.site-footer .footer-nav {
-  display: flex;
-  gap: 1rem;
+main p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.4;
 }
 
-.site-footer .footer-nav a {
-  text-decoration: none;
-  color: #555;
-  font-size: 0.875rem;
+/* --- Footer --- */
+footer {
+    max-width: 700px;
+    margin-top: auto;
+    padding-top: 4vh;
 }
 
-/* Optional breakpoints */
-@media (max-width: 640px) {
-  .site-header,
-  .site-footer {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .hero-content {
-    padding: 1rem;
-  }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+.logo-text {
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    letter-spacing: 0.04em;
+    transform-origin: center left;
+    display: inline-block;
+}
+
+.icon {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.footer-text {
+    font-size: clamp(0.6rem, 1.4vw, 0.8rem);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* --- Responsive Breakpoints --- */
+
+/* Small devices (phones) */
+@media (max-width: 600px) {
+    body { font-size: 0.85rem; }
+    .container { padding: 5vh 4vw 2vh 4vw; }
+    .content-wrapper { gap: 1.5vh; }
+    nav { margin-bottom: 2vh; gap: 4vw; }
+}
+
+/* Medium devices (tablets and iPad Pro) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body { font-size: 0.9rem; }
+    .container { padding: 8vh 5vw 3vh 8vw; }
+    header { margin-bottom: 15vh; }
+    .content-wrapper { gap: 4vh; }
+    nav { margin-bottom: 3vh; }
+}
+
+/* Large devices (desktops and above) */
+@media (min-width: 1200px) {
+    body { font-size: 1rem; }
+    .container { padding: 10vh 6vw 4vh 12vw; }
+    header { margin-bottom: 18vh; }
+    .content-wrapper {
+        flex-direction: column;
+        gap: 6vw;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 3vw;
+        margin: 0 0 2.5vh 0;
+    }
+    main {
+        /* Reset flex sizing as full width under nav */
+        flex: none;
+    }
 }

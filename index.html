@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>INTK72</title>
-  <link rel="stylesheet" href="css/base.css"/>
-  <link rel="stylesheet" href="css/header.css"/>
-  <link rel="stylesheet" href="css/footer.css"/>
-  <link rel="stylesheet" href="css/index.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- UPDATED: Added font-weight 400 for regular text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <img src="assets/logo-small.png" alt="INTK72 Logo" class="logo-img" />
-      INTK72.
+    <div class="container">
+        <header>
+            <h1>
+                THIS SYSTEM<br>
+                WAS DESIGNED<br>
+                TO PRESERVE<br>
+                YOUR EATING<br>
+                ROUTINE, EVEN IN<br>
+                TIMES OF<br>
+                DISRUPTION.
+            </h1>
+        </header>
+
+        <div class="content-wrapper">
+            <nav>
+                <a href="#">SYSTEM OVERVIEW</a>
+                <a href="#">SYSTEM TRYOUT</a>
+            </nav>
+
+            <main>
+                <!-- MODIFIED: Removed <br> tags to allow text to flow naturally -->
+                <p>
+                    This interface contains two functions. Each serves a
+                    different way of reading the system: One focused on
+                    internal structure, the other on external interaction.
+                </p>
+            </main>
+        </div>
+
+        <footer>
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <!-- MODIFIED: Removed <br> tags -->
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </footer>
     </div>
-    <button class="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav-links">
-      <!-- put your nav links here -->
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <video id="bg-video" autoplay muted loop playsinline>
-      <source src="assets\shapes start.mp4" type="video/mp4" />
-      <!-- fallback image? -->
-    </video>
-    <div class="hero-content">
-      <h1>
-        INTK72 WAS DESIGNED TO PRESERVE YOUR EATING ROUTINE—EVEN IN TIMES OF DISRUPTION.
-      </h1>
-      <a href="userid.html" class="btn">Start configuring your intake routine</a>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <small>© 2025 INTK72</small>
-    <nav class="footer-nav">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Accessibility</a>
-    </nav>
-  </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
