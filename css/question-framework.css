@@ -1,0 +1,332 @@
+/* Question Framework Page Styles */
+
+/* Sticky Header */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: transparent;
+    padding: 4vh 0 0.5vh 0;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3vw 0 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-arrow, .forward-arrow {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.back-arrow:hover, .forward-arrow:hover {
+    opacity: 0.7;
+}
+
+.page-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    border-bottom: 3px solid black;
+    padding-bottom: 0.1em;
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    padding: 0 0 1vh 1vw;
+}
+
+.content-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 1vh 0;
+}
+
+.secondary-text {
+    margin-top: 1vh !important;
+    margin-bottom: 0 !important;
+}
+
+/* Categories Section */
+.categories-section {
+    padding: 0 0 0 1vw;
+}
+
+.category-item {
+    background-color: #e8e8e8;
+    padding: 2vh 3vw;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-item:hover {
+    background-color: #ddd;
+}
+
+.category-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+}
+
+.category-arrow {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #666;
+}
+
+/* Bottom Text */
+.bottom-text {
+    padding: 1vh 0 4vh 1vw;
+}
+
+.bottom-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Gray Section */
+.gray-section {
+    background-color: #f5f5f5;
+    width: 100vw;
+    padding: 8vh 1vw;
+}
+
+.gray-content {
+    max-width: 900px;
+    margin: 0 0 0 0;
+    padding: 0 8vw;
+}
+
+.section-header {
+    margin-bottom: 4vh;
+}
+
+.section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    color: #ff0000;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 2vh;
+}
+
+.explanation-text {
+    margin-bottom: 6vh;
+}
+
+.explanation-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Shape Grid */
+.shape-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4vw;
+    margin-bottom: 6vh;
+}
+
+.shape-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.shape-svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2vh;
+}
+
+.shape-number {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-weight: 600;
+    color: black;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 150px);
+    background-color: rgba(245, 245, 245, 0.9);
+}
+
+.modal-content {
+    background-color: transparent;
+    margin: 0;
+    padding: 6vh 8vw;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6vh;
+}
+
+.modal-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    margin: 0;
+}
+
+.close {
+    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-weight: 600;
+    cursor: pointer;
+    color: black;
+}
+
+.close:hover {
+    opacity: 0.7;
+}
+
+.question-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6vh;
+    gap: 10vw;
+}
+
+.question-number {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-weight: 600;
+    color: black;
+    transform: scaleY(1.2);
+    min-width: 1.5em;
+    flex-shrink: 0;
+}
+
+.question-content {
+    flex: 1;
+}
+
+.question-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    line-height: 1.1;
+    margin: 0 0 2vh 0;
+}
+
+.question-description {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .shape-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6vw;
+    }
+    
+    .shape-svg {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .category-item {
+        padding: 2vh 4vw;
+    }
+    
+    .modal-content {
+        padding: 4vh 4vw;
+    }
+    
+    .question-item {
+        gap: 12vw;
+    }
+    
+    .question-number {
+        min-width: 1.2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-content,
+    .gray-content {
+        padding: 0 4vw;
+    }
+    
+    .shape-row {
+        gap: 8vw;
+    }
+    
+    .modal-content {
+        padding: 3vh 4vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-content {
+        padding: 0 3vw 0 12vw;
+    }
+    
+    .gray-content {
+        padding: 0 12vw;
+    }
+    
+    .shape-row {
+        gap: 3vw;
+    }
+    
+    .shape-svg {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .modal-content {
+        padding: 8vh 12vw;
+    }
+    
+    .question-item {
+        gap: 4vw;
+    }
+}

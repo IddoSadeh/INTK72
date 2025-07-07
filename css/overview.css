@@ -1,0 +1,83 @@
+/* Overview page specific styles */
+
+.overview-content {
+    padding-top: 8vh;
+}
+
+.system-list {
+    list-style: none;
+    counter-reset: system-counter;
+    margin: 0;
+    padding: 0;
+}
+
+.system-list li {
+    counter-increment: system-counter;
+    margin-bottom: 8vh;
+    display: flex;
+    align-items: flex-start;
+}
+
+.system-list li::before {
+    content: counter(system-counter);
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: black;
+    margin-right: 3vw;
+    min-width: 2em;
+    transform: scaleY(1.2);
+}
+
+.system-link {
+    text-decoration: none;
+    color: black;
+    display: block;
+    flex: 1;
+}
+
+.system-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.1;
+    transform: scaleY(1.2);
+    display: inline-block;
+    border-bottom: 3px solid black;
+    padding-bottom: 0.1em;
+}
+
+.system-link:hover .system-title {
+    border-bottom-color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .overview-content {
+        padding-top: 5vh;
+    }
+    
+    .system-list li {
+        margin-bottom: 6vh;
+    }
+    
+    .system-list li::before {
+        margin-right: 4vw;
+        min-width: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .overview-content {
+        padding-top: 10vh;
+    }
+    
+    .system-list li {
+        margin-bottom: 10vh;
+    }
+    
+    .system-list li::before {
+        margin-right: 2vw;
+    }
+}
