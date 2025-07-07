@@ -1,0 +1,69 @@
+/* Completion Page Styles */
+
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8vh;
+    gap: 3vw;
+    padding-top: 2vh;
+}
+
+.nav-link {
+    color: black;
+    text-decoration: none;
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 600;
+    border-bottom: 3px solid black;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    padding-bottom: 0.1em;
+}
+
+.nav-link:hover {
+    border-bottom-color: #666;
+}
+
+/* Main Content */
+.completion-content {
+    margin-bottom: 8vh;
+}
+
+.completion-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    line-height: 1.1;
+    margin: 0 0 6vh 0;
+}
+
+.completion-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 600px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .top-nav {
+        flex-direction: column;
+        gap: 2vh;
+        align-items: flex-start;
+    }
+    
+    .completion-title {
+        margin-bottom: 4vh;
+    }
+}
+
+@media (min-width: 1200px) {
+    .completion-title {
+        margin-bottom: 8vh;
+    }
+}

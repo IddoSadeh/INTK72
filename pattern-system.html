@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pattern-system.css">
+</head>
+<body>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="header-content">
+            <a href="question-framework.html" class="back-arrow">←</a>
+            <h1 class="page-title">PATTERN SYSTEM</h1>
+            <a href="completion.html" class="forward-arrow">→</a>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="container">
+            <div class="content-text">
+                <p>
+                    Each user's 9 responses are mapped onto a 3×3 grid. This grid reflects three meals across three days and encodes the structural pattern of intake.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid Demo Section -->
+    <div class="grid-demo-section">
+        <div class="container">
+            <div class="grid-demo-container">
+                <div class="grid-text">
+                    <h2 class="demo-title">Real-time generation of a visual intake shape.</h2>
+                    <p class="demo-description">This example shows the main forms assigned to each question and does not represent a specific user profile.</p>
+                </div>
+                <div class="grid-visual">
+                    <video class="grid-video" autoplay muted loop>
+                        <source src="assets/pattern-demo.mp4" type="video/mp4">
+                        <div class="grid-fallback">
+                            <!-- Fallback 3x3 grid -->
+                            <div class="grid-3x3">
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                                <div class="grid-cell"></div>
+                            </div>
+                        </div>
+                    </video>
+                </div>
+            </div>
+            
+            <div class="summary-text">
+                <p>
+                    Individual answers combine to create a single intake shape. A compact visual summary of the user's eating structure, based on behavioral input.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gray Section -->
+    <div class="gray-section">
+        <div class="gray-content">
+            <div class="section-header">
+                <span class="section-label">Visual Mapping Process</span>
+            </div>
+
+            <!-- Level Container -->
+            <div class="level-container">
+                <div class="level-visual">
+                    <img id="level-image" src="assets/levels/level-1.svg" alt="Level 1" class="level-svg">
+                </div>
+                
+                <div class="level-content">
+                    <div class="level-header">
+                        <h3 id="level-title" class="level-title">LEVEL 1</h3>
+                        <button id="level-arrow" class="level-arrow" onclick="nextLevel()">→</button>
+                    </div>
+                    <p id="level-description" class="level-description">
+                        All selected forms (Q1-Q9) are positioned on a predefined 3×3 intake grid according to question order and response category.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLevel = 1;
+        const maxLevels = 5;
+
+        const levelData = {
+            1: {
+                title: "LEVEL 1",
+                description: "All selected forms (Q1-Q9) are positioned on a predefined 3×3 intake grid according to question order and response category.",
+                image: "assets/levels/level-1.svg"
+            },
+            2: {
+                title: "LEVEL 2", 
+                description: "The grid is removed, isolating the raw visual composition of the selected intake forms.",
+                image: "assets/levels/level-2.svg"
+            },
+            3: {
+                title: "LEVEL 3",
+                description: "A perimeter is generated around each individual form, defining the outline of each mapped response.",
+                image: "assets/levels/level-3.svg"
+            },
+            4: {
+                title: "LEVEL 4",
+                description: "All perimeters are merged into a single, continuous boundary, unifying the structure.",
+                image: "assets/levels/level-4.svg"
+            },
+            5: {
+                title: "LEVEL 5",
+                description: "All perimeters are merged into a single, continuous boundary, unifying the structure.",
+                image: "assets/levels/level-5.svg"
+            }
+        };
+
+        function nextLevel() {
+            currentLevel++;
+            if (currentLevel > maxLevels) {
+                currentLevel = 1; // Loop back to level 1
+            }
+            
+            updateLevel();
+        }
+
+        function updateLevel() {
+            const data = levelData[currentLevel];
+            
+            document.getElementById('level-title').textContent = data.title;
+            document.getElementById('level-description').textContent = data.description;
+            document.getElementById('level-image').src = data.image;
+            document.getElementById('level-image').alt = data.title;
+            
+            // Update arrow style for level 5
+            const arrow = document.getElementById('level-arrow');
+            if (currentLevel === 5) {
+                arrow.innerHTML = '↵'; // Curved arrow for level 5
+                arrow.classList.add('curved-arrow');
+            } else {
+                arrow.innerHTML = '→'; // Regular arrow for other levels
+                arrow.classList.remove('curved-arrow');
+            }
+        }
+    </script>
+</body>
+</html>
