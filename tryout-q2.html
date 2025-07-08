@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tryout.css">
+</head>
+<body>
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="question-content">
+            <div class="question-header">
+                <h1 class="question-main-title">YOU ARE NOW CONFIGURING YOUR INTAKE PATTERN.</h1>
+            </div>
+
+            <div class="question-section">
+                <div class="question-info">
+                    <span class="question-number">2</span>
+                    <h2 class="question-title">What's your typical breakfast like?</h2>
+                </div>
+
+                <div class="answer-options">
+                    <button type="button" class="answer-option" data-question="2" data-answer="1" data-shape="2-1">
+                        <span class="answer-icon">
+                            <img src="assets/shapes/2-1.svg" alt="Answer 1 icon">
+                        </span>
+                        <span class="answer-text">Toast, cereal or dairy</span>
+                    </button>
+                    <button type="button" class="answer-option" data-question="2" data-answer="2" data-shape="2-2">
+                        <span class="answer-icon">
+                            <img src="assets/shapes/2-2.svg" alt="Answer 2 icon">
+                        </span>
+                        <span class="answer-text">Protein + fiber combo</span>
+                    </button>
+                    <button type="button" class="answer-option" data-question="2" data-answer="3" data-shape="2-3">
+                        <span class="answer-icon">
+                            <img src="assets/shapes/2-3.svg" alt="Answer 3 icon">
+                        </span>
+                        <span class="answer-text">Something light or sweet</span>
+                    </button>
+                    <button type="button" class="answer-option" data-question="2" data-answer="4" data-shape="2-4">
+                        <span class="answer-icon">
+                            <img src="assets/shapes/2-4.svg" alt="Answer 4 icon">
+                        </span>
+                        <span class="answer-text">Yes, in every meal</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Selection Feedback -->
+            <div class="selection-feedback">
+                <div class="current-selection">
+                    <span class="selection-label">Current Selection:</span>
+                    <div class="selected-shape" id="selected-shape-display">
+                        <!-- Selected shape will appear here -->
+                    </div>
+                </div>
+                <div class="progress-indicator">
+                    <span class="progress-text">2/9 Completed</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <div class="tryout-navigation">
+            <a href="tryout-q1.html" class="nav-arrow back-arrow">←</a>
+            <a href="tryout-q3.html" class="nav-arrow forward-arrow">→</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize user data storage with sessionStorage
+        function initializeUserData() {
+            let userData = sessionStorage.getItem('intk72UserData');
+            if (!userData) {
+                userData = {
+                    identification: {},
+                    consumptionLimits: {
+                        dietary: [],
+                        allergies: []
+                    },
+                    answers: {}
+                };
+                sessionStorage.setItem('intk72UserData', JSON.stringify(userData));
+            } else {
+                userData = JSON.parse(userData);
+            }
+            window.intk72UserData = userData;
+            return userData;
+        }
+
+        // Save data to sessionStorage
+        function saveUserData() {
+            sessionStorage.setItem('intk72UserData', JSON.stringify(window.intk72UserData));
+        }
+
+        // Handle answer selection
+        function setupAnswerSelection() {
+            const answerOptions = document.querySelectorAll('.answer-option');
+            const selectedShapeDisplay = document.getElementById('selected-shape-display');
+            
+            answerOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.getAttribute('data-question');
+                    const answer = this.getAttribute('data-answer');
+                    const shape = this.getAttribute('data-shape');
+                    
+                    // Remove selection from all options
+                    answerOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selection to clicked option
+                    this.classList.add('selected');
+                    
+                    // Store the answer
+                    window.intk72UserData.answers[`q${question}`] = {
+                        answer: answer,
+                        shape: shape,
+                        text: this.querySelector('.answer-text').textContent
+                    };
+                    
+                    // Save to sessionStorage
+                    saveUserData();
+                    
+                    // Display selected shape
+                    selectedShapeDisplay.innerHTML = `<img src="assets/shapes/${shape}.svg" alt="Selected shape" class="selected-shape-icon">`;
+                    
+                    console.log('Question 2 answered:', window.intk72UserData.answers[`q${question}`]);
+                    console.log('All user data:', window.intk72UserData);
+                });
+            });
+        }
+
+        // Load previous selection if it exists
+        function loadPreviousSelection() {
+            if (window.intk72UserData.answers.q2) {
+                const savedAnswer = window.intk72UserData.answers.q2;
+                const answerButton = document.querySelector(`[data-answer="${savedAnswer.answer}"]`);
+                const selectedShapeDisplay = document.getElementById('selected-shape-display');
+                
+                if (answerButton) {
+                    answerButton.classList.add('selected');
+                    selectedShapeDisplay.innerHTML = `<img src="assets/shapes/${savedAnswer.shape}.svg" alt="Selected shape" class="selected-shape-icon">`;
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeUserData();
+            setupAnswerSelection();
+            loadPreviousSelection();
+            
+            console.log('Question 2 page loaded. Current data:', window.intk72UserData);
+        });
+    </script>
+</body>
+</html>

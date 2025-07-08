@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine Mapping</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tryout.css">
+</head>
+<body>
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="form-content">
+            <div class="form-header">
+                <h1 class="form-title">ROUTINE MAPPING</h1>
+                <p class="form-description">
+                    This is the starting point of your intake configuration. You'll answer 9 questions, each shaping a specific part of your intake pattern. Your responses will be used to build a visual and functional structure that reflects your eating habits.
+                </p>
+            </div>
+
+            <!-- Answering Guide -->
+            <div class="guide-section">
+                <div class="guide-header">
+                    <span class="guide-label">Answering Guide</span>
+                </div>
+                
+                <div class="guide-items">
+                    <div class="guide-item">
+                        <span class="guide-number">1</span>
+                        <div class="guide-content">
+                            <p class="guide-text">
+                                You can select only one answer per question.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <span class="guide-number">2</span>
+                        <div class="guide-content">
+                            <p class="guide-text">
+                                Answers can be changed during the flow, but once confirmed, they are locked.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <span class="guide-number">3</span>
+                        <div class="guide-content">
+                            <p class="guide-text">
+                                No data will be saved. This is a simulation only.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <div class="tryout-navigation">
+            <a href="consumption-limits.html" class="nav-arrow back-arrow">←</a>
+            <a href="tryout-q1.html" class="nav-arrow forward-arrow">→</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize or maintain user data
+        if (!window.intk72UserData) {
+            window.intk72UserData = {
+                identification: {},
+                consumptionLimits: {
+                    dietary: [],
+                    allergies: []
+                },
+                answers: {}
+            };
+        }
+
+        console.log('Routine mapping page loaded. Current data:', window.intk72UserData);
+    </script>
+</body>
+</html>

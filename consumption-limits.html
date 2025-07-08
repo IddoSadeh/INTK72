@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumption Limits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tryout.css">
+</head>
+<body>
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="form-content">
+            <div class="form-header">
+                <h1 class="form-title">CONSUMPTION LIMITS</h1>
+                <p class="form-description">
+                    Select any relevant dietary restrictions or allergies. These will be taken into account when generating your simulated intake structure.
+                </p>
+            </div>
+
+            <!-- Dietary Restrictions -->
+            <div class="selection-section">
+                <div class="selection-grid dietary-grid">
+                    <button type="button" class="selection-option" data-category="dietary" data-value="vegetarian">
+                        <span class="option-icon">
+                            <img src="assets/icons/vegetarian.svg" alt="Vegetarian icon">
+                        </span>
+                        <span class="option-text">Vegetarian</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="dietary" data-value="vegan">
+                        <span class="option-icon">
+                            <img src="assets/icons/vegan.svg" alt="Vegan icon">
+                        </span>
+                        <span class="option-text">Vegan</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="dietary" data-value="lactose-free">
+                        <span class="option-icon">
+                            <img src="assets/icons/lactose-free.svg" alt="Lactose-Free icon">
+                        </span>
+                        <span class="option-text">Lactose-Free</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="dietary" data-value="gluten-free">
+                        <span class="option-icon">
+                            <img src="assets/icons/gluten-free.svg" alt="Gluten-Free icon">
+                        </span>
+                        <span class="option-text">Gluten-Free</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="dietary" data-value="low-sugar">
+                        <span class="option-icon">
+                            <img src="assets/icons/low-sugar.svg" alt="Low-Sugar icon">
+                        </span>
+                        <span class="option-text">Low-Sugar</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="dietary" data-value="kosher">
+                        <span class="option-icon">
+                            <img src="assets/icons/kosher.svg" alt="Kosher icon">
+                        </span>
+                        <span class="option-text">Kosher</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Allergies Section -->
+            <div class="allergies-section">
+                <h2 class="section-title">Allergies:</h2>
+                <div class="selection-grid allergies-grid">
+                    <button type="button" class="selection-option" data-category="allergies" data-value="sesame">
+                        <span class="option-icon">
+                            <img src="assets/icons/sesame.svg" alt="Sesame icon">
+                        </span>
+                        <span class="option-text">Sesame</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="allergies" data-value="nuts">
+                        <span class="option-icon">
+                            <img src="assets/icons/nuts.svg" alt="Nuts icon">
+                        </span>
+                        <span class="option-text">Nuts</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="allergies" data-value="eggs">
+                        <span class="option-icon">
+                            <img src="assets/icons/eggs.svg" alt="Eggs icon">
+                        </span>
+                        <span class="option-text">Eggs</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="allergies" data-value="soy">
+                        <span class="option-icon">
+                            <img src="assets/icons/soy.svg" alt="Soy icon">
+                        </span>
+                        <span class="option-text">Soy</span>
+                    </button>
+                    <button type="button" class="selection-option" data-category="allergies" data-value="peanuts">
+                        <span class="option-icon">
+                            <img src="assets/icons/peanuts.svg" alt="Peanuts icon">
+                        </span>
+                        <span class="option-text">Peanuts</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <div class="tryout-navigation">
+            <a href="tryout-identification.html" class="nav-arrow back-arrow">←</a>
+            <a href="tryout-q1.html" class="nav-arrow forward-arrow">→</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize user data storage with sessionStorage
+        function initializeUserData() {
+            let userData = sessionStorage.getItem('intk72UserData');
+            if (!userData) {
+                userData = {
+                    identification: {},
+                    consumptionLimits: {
+                        dietary: [],
+                        allergies: []
+                    },
+                    answers: {}
+                };
+                sessionStorage.setItem('intk72UserData', JSON.stringify(userData));
+            } else {
+                userData = JSON.parse(userData);
+            }
+            window.intk72UserData = userData;
+            
+            // Ensure consumptionLimits exists
+            if (!window.intk72UserData.consumptionLimits) {
+                window.intk72UserData.consumptionLimits = {
+                    dietary: [],
+                    allergies: []
+                };
+            }
+            
+            return userData;
+        }
+
+        // Save data to sessionStorage
+        function saveUserData() {
+            sessionStorage.setItem('intk72UserData', JSON.stringify(window.intk72UserData));
+        }
+
+        // Handle selection option clicks
+        function setupSelectionHandling() {
+            const selectionOptions = document.querySelectorAll('.selection-option');
+            
+            selectionOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    const value = this.getAttribute('data-value');
+                    
+                    // Toggle selection
+                    this.classList.toggle('selected');
+                    
+                    // Update data storage
+                    const categoryArray = window.intk72UserData.consumptionLimits[category];
+                    const index = categoryArray.indexOf(value);
+                    
+                    if (this.classList.contains('selected')) {
+                        // Add to array if not already present
+                        if (index === -1) {
+                            categoryArray.push(value);
+                        }
+                    } else {
+                        // Remove from array if present
+                        if (index > -1) {
+                            categoryArray.splice(index, 1);
+                        }
+                    }
+                    
+                    // Save to sessionStorage
+                    saveUserData();
+                    
+                    console.log('Consumption limits updated:', window.intk72UserData.consumptionLimits);
+                });
+            });
+        }
+
+        // Load previous selections
+        function loadPreviousSelections() {
+            const selectionOptions = document.querySelectorAll('.selection-option');
+            
+            selectionOptions.forEach(option => {
+                const category = option.getAttribute('data-category');
+                const value = option.getAttribute('data-value');
+                const categoryArray = window.intk72UserData.consumptionLimits[category];
+                
+                if (categoryArray && categoryArray.includes(value)) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        // Save data when navigating forward
+        function saveDataOnNavigation() {
+            const forwardArrow = document.querySelector('.forward-arrow');
+            forwardArrow.addEventListener('click', function() {
+                saveUserData();
+                console.log('Final consumption limits data:', window.intk72UserData.consumptionLimits);
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeUserData();
+            setupSelectionHandling();
+            loadPreviousSelections();
+            saveDataOnNavigation();
+            
+            console.log('Consumption limits page loaded. Current data:', window.intk72UserData);
+        });
+    </script>
+</body>
+</html>

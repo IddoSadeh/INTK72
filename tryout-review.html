@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Answers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tryout.css">
+</head>
+<body>
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="review-content">
+            <div class="review-header">
+                <h1 class="review-main-title">YOU ARE NOW CONFIGURING YOUR INTAKE PATTERN.</h1>
+                <div class="review-description">
+                    <p>You've completed all 9 questions.</p>
+                    <p>The selections below reflect your current intake profile.</p>
+                    <p>By continuing, you confirm and approve your choices.</p>
+                </div>
+            </div>
+
+            <div class="answers-summary" id="answers-summary">
+                <!-- Answers will be populated by JavaScript -->
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <div class="tryout-navigation">
+            <a href="tryout-q9.html" class="nav-arrow back-arrow">←</a>
+            <a href="tryout-processing.html" class="nav-arrow forward-arrow">→</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        /* Review Page Specific Styles */
+        .review-header {
+            margin-bottom: 4vh;
+        }
+
+        .review-main-title {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            line-height: 1.1;
+            margin: 0 0 2vh 0;
+            max-width: 700px;
+        }
+
+        .review-description {
+            max-width: 600px;
+        }
+
+        .review-description p {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 0.5vh 0;
+            color: black;
+        }
+
+        /* Answers Summary */
+        .answers-summary {
+            flex-grow: 1;
+            margin-bottom: 3vh;
+        }
+
+        .answer-summary-item {
+            border: 2px solid #ff0000 !important;
+            margin-bottom: 1.5vh;
+            background-color: white;
+            padding: 2vh 2.5vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .summary-question {
+            margin-bottom: 1.5vh;
+            display: flex;
+            align-items: flex-start;
+            gap: 1em;
+        }
+
+        .summary-question-number {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            color: black;
+            transform: scaleY(1.2);
+            flex-shrink: 0;
+        }
+
+        .summary-question-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            color: black;
+            flex: 1;
+        }
+
+        .summary-answer {
+            background-color: #f5f5f5 !important;
+            padding: 1.5vh 2vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 2em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .answer-content {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            flex: 1;
+        }
+
+        .answer-shape-container {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .answer-shape-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .answer-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            color: black;
+            flex: 1;
+        }
+
+        .edit-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5em;
+            color: #666;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .edit-button:hover {
+            color: black;
+        }
+
+        .edit-button svg {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+
+    <script>
+        // Question text mapping
+        const questionTexts = {
+            q1: "How would you describe your daily food choices?",
+            q2: "What's your typical breakfast like?",
+            q3: "Do you make an effort to include protein in your meals?",
+            q4: "How often do you eat the same meals?",
+            q5: "How do your meals usually look on the plate?",
+            q6: "How would you describe your eating routine?",
+            q7: "What kind of food comforts you most?",
+            q8: "What's your go-to sweet?",
+            q9: "What kinds of flavors do you enjoy most often?"
+        };
+
+        // Initialize user data storage with sessionStorage
+        function initializeUserData() {
+            let userData = sessionStorage.getItem('intk72UserData');
+            if (!userData) {
+                userData = {
+                    identification: {},
+                    consumptionLimits: {
+                        dietary: [],
+                        allergies: []
+                    },
+                    answers: {}
+                };
+                sessionStorage.setItem('intk72UserData', JSON.stringify(userData));
+            } else {
+                userData = JSON.parse(userData);
+            }
+            window.intk72UserData = userData;
+            return userData;
+        }
+
+        // Populate answers summary
+        function populateAnswersSummary() {
+            const summaryContainer = document.getElementById('answers-summary');
+            let summaryHTML = '';
+
+            for (let i = 1; i <= 9; i++) {
+                const questionKey = `q${i}`;
+                const questionData = window.intk72UserData.answers[questionKey];
+                const questionText = questionTexts[questionKey];
+                
+                let answerText = 'No answer selected';
+                let shapeIcon = '';
+                
+                if (questionData) {
+                    answerText = questionData.text;
+                    shapeIcon = `
+                        <div class="answer-shape-container">
+                            <img src="assets/shapes/${questionData.shape}.svg" alt="Selected shape" class="answer-shape-icon">
+                        </div>
+                    `;
+                }
+
+                summaryHTML += `
+                    <div class="answer-summary-item" data-question="${i}">
+                        <div class="summary-question">
+                            <span class="summary-question-number">Q${i}</span>
+                            <span class="summary-question-text">${questionText}</span>
+                        </div>
+                        <div class="summary-answer">
+                            <div class="answer-content">
+                                ${shapeIcon}
+                                <span class="answer-text">${answerText}</span>
+                            </div>
+                            <button class="edit-button" onclick="editAnswer(${i})">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M12.146 1.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708L6.207 12.5H3.5v-2.707l8.646-8.647zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zM10.5 3.207L3 10.707V12h1.293l7.5-7.5L10.5 3.207z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            summaryContainer.innerHTML = summaryHTML;
+        }
+
+        // Edit answer function
+        function editAnswer(questionNumber) {
+            // Navigate to the specific question page
+            window.location.href = `tryout-q${questionNumber}.html`;
+        }
+
+        // Check completion status
+        function checkCompletionStatus() {
+            const answeredQuestions = Object.keys(window.intk72UserData.answers).length;
+            console.log(`Answered questions: ${answeredQuestions}/9`);
+            
+            // Highlight incomplete questions
+            const summaryItems = document.querySelectorAll('.answer-summary-item');
+            summaryItems.forEach((item, index) => {
+                const questionKey = `q${index + 1}`;
+                if (!window.intk72UserData.answers[questionKey]) {
+                    item.classList.add('incomplete');
+                }
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeUserData();
+            populateAnswersSummary();
+            checkCompletionStatus();
+            
+            console.log('Review page loaded. Current data:', window.intk72UserData);
+        });
+    </script>
+</body>
+</html>
