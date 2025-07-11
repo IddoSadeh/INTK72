@@ -3,77 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Summary with Animated Pattern Offset</title>
+    <title>Profile Summary</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tryout.css">
     <script src="https://cdn.jsdelivr.net/npm/clipper-lib@6.4.2/clipper.min.js"></script>
-    <style>
-        /* Inline essential styles */
-        .generated-pattern {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border: 2px solid #e0e0e0;
-            background-color: white;
-        }
-        #offset-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-    </style>
 </head>
 <body>
-  <div class="container tryout-container">
-    <main class="overview-content results-content">
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="results-content">
+            <div class="results-header">
+                <h1 class="results-title">PROFILE SUMMARY</h1>
+            </div>
 
-      <!-- Title as a single-item system-list to get the blue box underline -->
-      <ul class="system-list">
-        <li>
-          <a href="#" class="system-link">
-            <span class="system-title">PROFILE SUMMARY</span>
-          </a>
-        </li>
-      </ul>
+            <!-- User Identification Section -->
+            <div class="identification-section">
+                <h2 class="section-title">USER IDENTIFICATION</h2>
+                <div class="user-details" id="user-details">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
 
-      <section class="identification-section">
-        <h2 class="section-title">USER IDENTIFICATION</h2>
-        <div class="user-details" id="user-details"></div>
-      </section>
+            <!-- Pattern and Preferences Section -->
+            <div class="pattern-section">
+                <div class="pattern-column">
+                    <div class="pattern-visual">
+                        <div id="generated-pattern" class="generated-pattern">
+                            <canvas id="offset-canvas"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="input-index">
+                        <p><strong>Input Index:</strong></p>
+                        <p id="input-index-values"><!-- Will be populated --></p>
+                    </div>
+                </div>
+                
+                <div class="preferences-summary">
+                    <h3 class="preferences-title">PREFERENCES</h3>
+                    <div class="preference-items" id="preference-items">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
 
-      <section class="pattern-section">
-        <div class="pattern-column">
-          <div class="pattern-visual">
-            <canvas id="offset-canvas" class="generated-pattern"></canvas>
-          </div>
-          <div class="input-index">
-            <p><strong>Input Index:</strong></p>
-            <p id="input-index-values"></p>
-          </div>
-        </div>
-        <div class="preferences-summary">
-          <h3 class="preferences-title">PREFERENCES</h3>
-          <div class="preference-items" id="preference-items"></div>
-        </div>
-      </section>
-
-      <nav class="action-links">
-        <a href="#" class="action-link" onclick="printResults();return false;">PRINT OUTPUT</a>
-        <a href="#" class="action-link" onclick="completeFlow();return false;">COMPLETE</a>
-      </nav>
-    </main>
-  </div>
-
-  <footer>
-    <div class="footer-content">
-      <div class="logo"><span class="icon">🌐</span><span class="logo-text">INTK72</span></div>
-      <p class="footer-text">
-        Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional 
-        balance to ensure continuity when access, availability, and predictability are compromised.
-      </p>
+            <!-- Action Links -->
+            <div class="action-links">
+                <a href="#" class="action-link" onclick="printResults(); return false;">PRINT OUTPUT</a>
+                <a href="#" class="action-link" onclick="completeFlow(); return false;">COMPLETE</a>
+            </div>
+        </main>
     </div>
-  </footer>
-  
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        /* Results Page Styles */
+        .results-content {
+            padding-top: 4vh;
+            padding-bottom: 4vh;
+        }
+
+        .results-title {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            line-height: 1.1;
+            margin: 0 0 4vh 0;
+            border-bottom: 3px solid black;
+            padding-bottom: 0.1em;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            margin: 0 0 2vh 0;
+        }
+
+        .identification-section {
+            margin-bottom: 4vh;
+        }
+
+        .user-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1vh 4vw;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+        }
+
+        .pattern-section {
+            display: flex;
+            gap: 4vw;
+            margin-bottom: 4vh;
+            align-items: flex-start;
+        }
+
+        .pattern-column {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pattern-visual {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e0e0e0;
+            background-color: white;
+            margin-bottom: 3vh;
+        }
+
+        .generated-pattern {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #offset-canvas {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        .input-index {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            font-weight: 600;
+            max-width: 300px;
+        }
+
+        .input-index p {
+            margin: 0.5vh 0;
+        }
+
+        .preferences-summary {
+            flex: 1;
+        }
+
+        .preferences-title {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            margin: 0 0 2vh 0;
+        }
+
+        .preference-items {
+            margin-bottom: 3vh;
+        }
+
+        .preference-item {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            margin-bottom: 1vh;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 4vw;
+            margin-top: 4vh;
+        }
+
+        .action-link {
+            color: inherit;
+            text-decoration: none;
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            border-bottom: 3px solid black;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            padding-bottom: 0.1em;
+        }
+
+        .action-link:hover {
+            border-bottom-color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .pattern-section {
+                flex-direction: column;
+                gap: 3vh;
+            }
+            
+            .pattern-column {
+                align-self: center;
+            }
+            
+            .pattern-visual {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .input-index {
+                max-width: 250px;
+                text-align: center;
+            }
+            
+            .user-details {
+                grid-template-columns: 1fr;
+                gap: 1vh;
+            }
+            
+            .action-links {
+                flex-direction: column;
+                gap: 2vh;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
     <script>
         // Initialization
         function initializeUserData() {
@@ -101,10 +268,12 @@
             if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
             return age;
         }
+
         function formatDate(day, month, year) {
             if (!day || !month || !year) return 'Not provided';
             return `${String(day).padStart(2,'0')}/${String(month).padStart(2,'0')}/${year}`;
         }
+
         function populateUserDetails() {
             const data = window.intk72UserData.identification;
             const age = calculateAge(data.birthYear, data.birthMonth, data.birthDay);
@@ -168,7 +337,7 @@
         function computeOffset(poly,curved){const co=new ClipperLib.ClipperOffset(ARC_TOLERANCE,MITER_LIMIT);co.AddPath(poly,curved?ClipperLib.JoinType.jtRound:ClipperLib.JoinType.jtMiter,ClipperLib.EndType.etClosedPolygon);const out=new ClipperLib.Paths();co.Execute(out,DELTA);return out;}
         function computeUnion(ps){const c=new ClipperLib.Clipper();ps.forEach(p=>c.AddPath(p,ClipperLib.PolyType.ptSubject,true));const o=new ClipperLib.Paths();c.Execute(ClipperLib.ClipType.ctUnion,o,ClipperLib.PolyFillType.pftNonZero,ClipperLib.PolyFillType.pftNonZero);return o;}
         function keepLargest(ps){if(!ps.length)return[];return[ps.reduce((b,c)=>Math.abs(ClipperLib.Clipper.Area(c))>Math.abs(ClipperLib.Clipper.Area(b))?c:b,ps[0])];}
-        async function runWorkflow(){resetCanvas();clearCanvas();drawGrid();originalShapes=await getPolygons();drawPolys(originalShapes.map(s=>s.pts));await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(originalShapes.map(s=>s.pts));offsetPolys=[];originalShapes.forEach(s=>offsetPolys.push(...computeOffset(s.pts,s.isCurved)));drawPolys(offsetPolys);await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(offsetPolys,{strokeStyle:'#f00'});await new Promise(r=>setTimeout(r,500));outerPoly=keepLargest(computeUnion(offsetPolys));clearCanvas();drawPolys(outerPoly);await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(outerPoly,{lineWidth:6});}
+        async function runWorkflow(){resetCanvas();clearCanvas();drawGrid();originalShapes=await getPolygons();drawPolys(originalShapes.map(s=>s.pts));await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(originalShapes.map(s=>s.pts));offsetPolys=[];originalShapes.forEach(s=>offsetPolys.push(...computeOffset(s.pts,s.isCurved)));drawPolys(offsetPolys,{strokeStyle:'#f00'});await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(offsetPolys,{strokeStyle:'#f00'});await new Promise(r=>setTimeout(r,500));outerPoly=keepLargest(computeUnion(offsetPolys));clearCanvas();drawPolys(outerPoly);await new Promise(r=>setTimeout(r,500));clearCanvas();drawPolys(outerPoly,{lineWidth:6});}
         document.addEventListener('DOMContentLoaded',()=>{initializeUserData();populateUserDetails();generatePreferencesSummary();generateInputIndex();runWorkflow();});
     </script>
 </body>
