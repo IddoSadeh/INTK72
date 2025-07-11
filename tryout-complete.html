@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Complete</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tryout.css">
+</head>
+<body>
+    <div class="container tryout-container">
+        <!-- Main Content -->
+        <main class="complete-content">
+            <div class="complete-header">
+                <h1 class="complete-title">
+                    YOU'VE COMPLETED A FULL SIMULATION OF THE INTAKE CONFIGURATION PROCESS.
+                </h1>
+                <div class="complete-description">
+                    <p>Your intake pattern has been generated based on your responses. If needed, you can export or print your pattern for reference. No data has been saved.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation Links -->
+        <div class="complete-navigation">
+            <a href="index.html" class="complete-link">EXIT TO MAIN</a>
+            <a href="tryout-start.html" class="complete-link">RESTART TRYOUT</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="icon">🌐</span>
+                <span class="logo-text">INTK72</span>
+            </div>
+            <p class="footer-text">
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to
+                ensure continuity when access. Availability, and predictability are compromised.
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        /* Complete Page Styles */
+        .complete-content {
+            padding-top: 4vh;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 4vh;
+        }
+
+        .complete-header {
+            max-width: 800px;
+            margin-bottom: 6vh;
+        }
+
+        .complete-title {
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            line-height: 1.1;
+            margin: 0 0 4vh 0;
+        }
+
+        .complete-description {
+            max-width: 600px;
+        }
+
+        .complete-description p {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+            color: black;
+        }
+
+        .complete-navigation {
+            display: flex;
+            gap: 4vw;
+        }
+
+        .complete-link {
+            color: inherit;
+            text-decoration: none;
+            font-family: 'FormaTextTest', 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            border-bottom: 3px solid black;
+            text-transform: uppercase;
+            transform: scaleY(1.2);
+            padding-bottom: 0.1em;
+        }
+
+        .complete-link:hover {
+            border-bottom-color: #666;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .complete-content {
+                padding-top: 3vh;
+            }
+
+            .complete-header {
+                margin-bottom: 4vh;
+            }
+
+            .complete-title {
+                margin-bottom: 3vh;
+            }
+
+            .complete-navigation {
+                flex-direction: column;
+                gap: 2vh;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .complete-content {
+                padding-top: 6vh;
+            }
+
+            .complete-header {
+                margin-bottom: 8vh;
+            }
+
+            .complete-title {
+                margin-bottom: 6vh;
+            }
+
+            .complete-navigation {
+                gap: 3vw;
+            }
+        }
+    </style>
+
+    <script>
+        // Clear any remaining session data
+        sessionStorage.removeItem('intk72UserData');
+        
+        console.log('Simulation completed. Session data cleared.');
+        
+        // Track completion for analytics if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('User completed full INTK72 simulation');
+        });
+    </script>
+</body>
+</html>
