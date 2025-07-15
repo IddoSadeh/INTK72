@@ -421,18 +421,35 @@
             `;
         }
 
-        // Preferences
+        // Updated Preferences Logic
         function generatePreferencesSummary() {
             const ans = window.intk72UserData.answers;
-            let lifestyle='Balanced', meal='Structured', flavor='Varied';
-            if (ans.q1?.answer==='1') lifestyle='Healthy';
-            if (ans.q1?.answer==='3') lifestyle='Quick';
-            if (ans.q6?.answer==='1') meal='Regular';
-            if (ans.q6?.answer==='4') meal='Random';
-            if (ans.q9?.answer==='1') flavor='Homestyle';
-            if (ans.q9?.answer==='2') flavor='Intense';
-            let priority='Standard';
-            if (window.intk72UserData.consumptionLimits.dietary.length||window.intk72UserData.consumptionLimits.allergies.length) priority='Specialized';
+            const userData = window.intk72UserData.identification;
+            
+            // Lifestyle: Healthy, Standard, Snacker
+            let lifestyle = 'Standard';
+            if (ans.q1?.answer === '1') lifestyle = 'Healthy';
+            else if (ans.q1?.answer === '3') lifestyle = 'Snacker';
+            
+            // Meal: Routine, Random, Flexible
+            let meal = 'Flexible';
+            if (ans.q6?.answer === '1') meal = 'Routine';
+            else if (ans.q6?.answer === '4') meal = 'Random';
+            
+            // Flavor: Homestyle, Junk, Mixed
+            let flavor = 'Mixed';
+            if (ans.q9?.answer === '1') flavor = 'Homestyle';
+            else if (ans.q9?.answer === '2') flavor = 'Junk';
+            
+            // Priority Status based on age
+            let priority = 'Standard';
+            const age = calculateAge(userData.birthYear, userData.birthMonth, userData.birthDay);
+            if (age !== null) {
+                if (age >= 65) priority = 'Elderly';
+                else if (age >= 3 && age <= 14) priority = 'Child';
+                else priority = 'Standard';
+            }
+            
             document.getElementById('preference-items').innerHTML = `
                 <div class="preference-item"><strong>Lifestyle:</strong> ${lifestyle}</div>
                 <div class="preference-item"><strong>Meal:</strong> ${meal}</div>
