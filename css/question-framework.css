@@ -1,47 +1,5 @@
 /* Question Framework Page Styles */
 
-/* Sticky Header */
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: transparent;
-    padding: 4vh 0 0.5vh 0;
-}
-
-.header-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 3vw 0 8vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.back-arrow, .forward-arrow {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.back-arrow:hover, .forward-arrow:hover {
-    opacity: 0.7;
-}
-
-.page-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    transform: scaleY(1.2);
-    border-bottom: 3px solid black;
-    padding-bottom: 0.1em;
-    margin: 0;
-}
-
 /* Main Content */
 .main-content {
     padding: 0 0 1vh 1vw;
@@ -290,7 +248,6 @@
 }
 
 @media (max-width: 600px) {
-    .header-content,
     .gray-content {
         padding: 0 4vw;
     }
@@ -305,10 +262,6 @@
 }
 
 @media (min-width: 1200px) {
-    .header-content {
-        padding: 0 3vw 0 12vw;
-    }
-    
     .gray-content {
         padding: 0 12vw;
     }
