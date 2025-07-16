@@ -2,7 +2,9 @@
 
 /* Main Content */
 .main-content {
-    padding: 0 0 4vh 1vw;
+    max-width: 900px;
+    padding: 4vh 3vw 2vh 9vw;
+    flex-grow: 1;
 }
 
 .content-text p {
