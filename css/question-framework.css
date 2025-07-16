@@ -146,7 +146,8 @@
     top: 0;
     width: 100%;
     height: calc(100% - 150px);
-    background-color: rgba(245, 245, 245, 0.9);
+    background-color: rgba(245, 245, 245, 0.95);
+    backdrop-filter: blur(2px);
 }
 
 .modal-content {
@@ -223,6 +224,29 @@
     line-height: 1.4;
     margin: 0;
     color: #333;
+}
+
+/* Modal Enhancement Styles */
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Blur effect for background content */
+.blur-background {
+    filter: blur(3px);
+    transition: filter 0.3s ease;
+}
+
+/* Smooth transition for modal appearance */
+.modal.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsive Adjustments */

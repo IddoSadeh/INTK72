@@ -21,36 +21,241 @@
         </div>
     </header>
 
-    <!-- Main Content Section -->
-    <div class="main-content">
-      
-            <div class="content-text">
-                <p>
-                    The intake profile is generated through a structured questionnaire, composed of 9 fixed questions. Each question is designed to extract behavioral tendencies, not personal preferences, in order to build a reliable and function-oriented eating pattern.
-                </p>
-                <p class="secondary-text">
-                    The questions are grouped into three functional categories:
-                </p>
-            </div>
-       
-    </div>
+    <!-- Wrap main content for blur effect -->
+    <div id="main-content">
+        <!-- Main Content Section -->
+        <div class="main-content">
+              
+                <div class="content-text">
+                    <p>
+                        The intake profile is generated through a structured questionnaire, composed of 9 fixed questions. Each question is designed to extract behavioral tendencies, not personal preferences, in order to build a reliable and function-oriented eating pattern.
+                    </p>
+                    <p class="secondary-text">
+                        The questions are grouped into three functional categories:
+                    </p>
+                </div>
+           
+        </div>
 
-    <!-- Categories Section -->
-    <div class="categories-section">
-        
-            <div class="category-item" onclick="openModal('lifestyle')">
-                <span class="category-title">LIFESTYLE PREFERENCES</span>
-                <span class="category-arrow">›</span>
+        <!-- Categories Section -->
+        <div class="categories-section">
+            
+                <div class="category-item" onclick="openModal('lifestyle')">
+                    <span class="category-title">LIFESTYLE PREFERENCES</span>
+                    <span class="category-arrow">›</span>
+                </div>
+                <div class="category-item" onclick="openModal('meal-structure')">
+                    <span class="category-title">MEAL STRUCTURE PREFERENCES</span>
+                    <span class="category-arrow">›</span>
+                </div>
+                <div class="category-item" onclick="openModal('flavor')">
+                    <span class="category-title">FLAVOR PREFERENCES</span>
+                    <span class="category-arrow">›</span>
+                </div>
+            
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="bottom-text">
+                <p>
+                    Each question is linked to a set of visual forms. Every answer is associated with a specific visual form, which together create the user's complete intake shape.
+                </p>
+        </div>
+
+        <!-- Gray Section -->
+        <div class="gray-section">
+            <div class="gray-content">
+                <div class="section-header">
+                    <span class="section-label">Shapes per Question</span>
+                </div>
+
+                <div class="explanation-text">
+                    <p>
+                        Answers are labeled in Q.A format — Question number and Answer number — and each one corresponds to a specific shape.
+                    </p>
+                </div>
+
+                <!-- Shape Grid Row 1 (1.1 - 1.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/1-1.svg" alt="Shape 1.1" class="shape-svg">
+                        <span class="shape-number">1.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/1-2.svg" alt="Shape 1.2" class="shape-svg">
+                        <span class="shape-number">1.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/1-3.svg" alt="Shape 1.3" class="shape-svg">
+                        <span class="shape-number">1.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/1-4.svg" alt="Shape 1.4" class="shape-svg">
+                        <span class="shape-number">1.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 2 (2.1 - 2.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/2-1.svg" alt="Shape 2.1" class="shape-svg">
+                        <span class="shape-number">2.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/2-2.svg" alt="Shape 2.2" class="shape-svg">
+                        <span class="shape-number">2.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/2-3.svg" alt="Shape 2.3" class="shape-svg">
+                        <span class="shape-number">2.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/2-4.svg" alt="Shape 2.4" class="shape-svg">
+                        <span class="shape-number">2.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 3 (3.1 - 3.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/3-1.svg" alt="Shape 3.1" class="shape-svg">
+                        <span class="shape-number">3.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/3-2.svg" alt="Shape 3.2" class="shape-svg">
+                        <span class="shape-number">3.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/3-3.svg" alt="Shape 3.3" class="shape-svg">
+                        <span class="shape-number">3.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/3-4.svg" alt="Shape 3.4" class="shape-svg">
+                        <span class="shape-number">3.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 4 (4.1 - 4.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/4-1.svg" alt="Shape 4.1" class="shape-svg">
+                        <span class="shape-number">4.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/4-2.svg" alt="Shape 4.2" class="shape-svg">
+                        <span class="shape-number">4.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/4-3.svg" alt="Shape 4.3" class="shape-svg">
+                        <span class="shape-number">4.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/4-4.svg" alt="Shape 4.4" class="shape-svg">
+                        <span class="shape-number">4.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 5 (5.1 - 5.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/5-1.svg" alt="Shape 5.1" class="shape-svg">
+                        <span class="shape-number">5.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/5-2.svg" alt="Shape 5.2" class="shape-svg">
+                        <span class="shape-number">5.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/5-3.svg" alt="Shape 5.3" class="shape-svg">
+                        <span class="shape-number">5.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/5-4.svg" alt="Shape 5.4" class="shape-svg">
+                        <span class="shape-number">5.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 6 (6.1 - 6.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/6-1.svg" alt="Shape 6.1" class="shape-svg">
+                        <span class="shape-number">6.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/6-2.svg" alt="Shape 6.2" class="shape-svg">
+                        <span class="shape-number">6.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/6-3.svg" alt="Shape 6.3" class="shape-svg">
+                        <span class="shape-number">6.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/6-4.svg" alt="Shape 6.4" class="shape-svg">
+                        <span class="shape-number">6.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 7 (7.1 - 7.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/7-1.svg" alt="Shape 7.1" class="shape-svg">
+                        <span class="shape-number">7.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/7-2.svg" alt="Shape 7.2" class="shape-svg">
+                        <span class="shape-number">7.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/7-3.svg" alt="Shape 7.3" class="shape-svg">
+                        <span class="shape-number">7.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/7-4.svg" alt="Shape 7.4" class="shape-svg">
+                        <span class="shape-number">7.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 8 (8.1 - 8.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/8-1.svg" alt="Shape 8.1" class="shape-svg">
+                        <span class="shape-number">8.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/8-2.svg" alt="Shape 8.2" class="shape-svg">
+                        <span class="shape-number">8.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/8-3.svg" alt="Shape 8.3" class="shape-svg">
+                        <span class="shape-number">8.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/8-4.svg" alt="Shape 8.4" class="shape-svg">
+                        <span class="shape-number">8.4</span>
+                    </div>
+                </div>
+
+                <!-- Shape Grid Row 9 (9.1 - 9.4) -->
+                <div class="shape-row">
+                    <div class="shape-item">
+                        <img src="assets/shapes/9-1.svg" alt="Shape 9.1" class="shape-svg">
+                        <span class="shape-number">9.1</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/9-2.svg" alt="Shape 9.2" class="shape-svg">
+                        <span class="shape-number">9.2</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/9-3.svg" alt="Shape 9.3" class="shape-svg">
+                        <span class="shape-number">9.3</span>
+                    </div>
+                    <div class="shape-item">
+                        <img src="assets/shapes/9-4.svg" alt="Shape 9.4" class="shape-svg">
+                        <span class="shape-number">9.4</span>
+                    </div>
+                </div>
             </div>
-            <div class="category-item" onclick="openModal('meal-structure')">
-                <span class="category-title">MEAL STRUCTURE PREFERENCES</span>
-                <span class="category-arrow">›</span>
-            </div>
-            <div class="category-item" onclick="openModal('flavor')">
-                <span class="category-title">FLAVOR PREFERENCES</span>
-                <span class="category-arrow">›</span>
-            </div>
-        
+        </div>
     </div>
 
     <!-- Modal Overlays -->
@@ -156,208 +361,6 @@
         </div>
     </div>
 
-    <!-- Bottom Text -->
-    <div class="bottom-text">
-            <p>
-                Each question is linked to a set of visual forms. Every answer is associated with a specific visual form, which together create the user's complete intake shape.
-            </p>
-    </div>
-
-    <!-- Gray Section -->
-    <div class="gray-section">
-        <div class="gray-content">
-            <div class="section-header">
-                <span class="section-label">Shapes per Question</span>
-            </div>
-
-            <div class="explanation-text">
-                <p>
-                    Answers are labeled in Q.A format — Question number and Answer number — and each one corresponds to a specific shape.
-                </p>
-            </div>
-
-            <!-- Shape Grid Row 1 (1.1 - 1.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/1-1.svg" alt="Shape 1.1" class="shape-svg">
-                    <span class="shape-number">1.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/1-2.svg" alt="Shape 1.2" class="shape-svg">
-                    <span class="shape-number">1.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/1-3.svg" alt="Shape 1.3" class="shape-svg">
-                    <span class="shape-number">1.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/1-4.svg" alt="Shape 1.4" class="shape-svg">
-                    <span class="shape-number">1.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 2 (2.1 - 2.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/2-1.svg" alt="Shape 2.1" class="shape-svg">
-                    <span class="shape-number">2.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/2-2.svg" alt="Shape 2.2" class="shape-svg">
-                    <span class="shape-number">2.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/2-3.svg" alt="Shape 2.3" class="shape-svg">
-                    <span class="shape-number">2.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/2-4.svg" alt="Shape 2.4" class="shape-svg">
-                    <span class="shape-number">2.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 3 (3.1 - 3.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/3-1.svg" alt="Shape 3.1" class="shape-svg">
-                    <span class="shape-number">3.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/3-2.svg" alt="Shape 3.2" class="shape-svg">
-                    <span class="shape-number">3.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/3-3.svg" alt="Shape 3.3" class="shape-svg">
-                    <span class="shape-number">3.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/3-4.svg" alt="Shape 3.4" class="shape-svg">
-                    <span class="shape-number">3.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 4 (4.1 - 4.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/4-1.svg" alt="Shape 4.1" class="shape-svg">
-                    <span class="shape-number">4.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/4-2.svg" alt="Shape 4.2" class="shape-svg">
-                    <span class="shape-number">4.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/4-3.svg" alt="Shape 4.3" class="shape-svg">
-                    <span class="shape-number">4.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/4-4.svg" alt="Shape 4.4" class="shape-svg">
-                    <span class="shape-number">4.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 5 (5.1 - 5.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/5-1.svg" alt="Shape 5.1" class="shape-svg">
-                    <span class="shape-number">5.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/5-2.svg" alt="Shape 5.2" class="shape-svg">
-                    <span class="shape-number">5.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/5-3.svg" alt="Shape 5.3" class="shape-svg">
-                    <span class="shape-number">5.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/5-4.svg" alt="Shape 5.4" class="shape-svg">
-                    <span class="shape-number">5.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 6 (6.1 - 6.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/6-1.svg" alt="Shape 6.1" class="shape-svg">
-                    <span class="shape-number">6.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/6-2.svg" alt="Shape 6.2" class="shape-svg">
-                    <span class="shape-number">6.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/6-3.svg" alt="Shape 6.3" class="shape-svg">
-                    <span class="shape-number">6.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/6-4.svg" alt="Shape 6.4" class="shape-svg">
-                    <span class="shape-number">6.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 7 (7.1 - 7.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/7-1.svg" alt="Shape 7.1" class="shape-svg">
-                    <span class="shape-number">7.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/7-2.svg" alt="Shape 7.2" class="shape-svg">
-                    <span class="shape-number">7.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/7-3.svg" alt="Shape 7.3" class="shape-svg">
-                    <span class="shape-number">7.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/7-4.svg" alt="Shape 7.4" class="shape-svg">
-                    <span class="shape-number">7.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 8 (8.1 - 8.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/8-1.svg" alt="Shape 8.1" class="shape-svg">
-                    <span class="shape-number">8.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/8-2.svg" alt="Shape 8.2" class="shape-svg">
-                    <span class="shape-number">8.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/8-3.svg" alt="Shape 8.3" class="shape-svg">
-                    <span class="shape-number">8.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/8-4.svg" alt="Shape 8.4" class="shape-svg">
-                    <span class="shape-number">8.4</span>
-                </div>
-            </div>
-
-            <!-- Shape Grid Row 9 (9.1 - 9.4) -->
-            <div class="shape-row">
-                <div class="shape-item">
-                    <img src="assets/shapes/9-1.svg" alt="Shape 9.1" class="shape-svg">
-                    <span class="shape-number">9.1</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/9-2.svg" alt="Shape 9.2" class="shape-svg">
-                    <span class="shape-number">9.2</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/9-3.svg" alt="Shape 9.3" class="shape-svg">
-                    <span class="shape-number">9.3</span>
-                </div>
-                <div class="shape-item">
-                    <img src="assets/shapes/9-4.svg" alt="Shape 9.4" class="shape-svg">
-                    <span class="shape-number">9.4</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -372,11 +375,35 @@
 
     <script>
         function openModal(modalId) {
-            document.getElementById(modalId + '-modal').style.display = 'block';
+            // Disable background scrolling
+            document.body.classList.add('modal-open');
+            
+            // Blur background content
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.classList.add('blur-background');
+            }
+            
+            // Show modal
+            const modal = document.getElementById(modalId + '-modal');
+            modal.style.display = 'block';
+            modal.classList.add('show');
         }
         
         function closeModal(modalId) {
-            document.getElementById(modalId + '-modal').style.display = 'none';
+            // Re-enable background scrolling
+            document.body.classList.remove('modal-open');
+            
+            // Remove blur effect
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.classList.remove('blur-background');
+            }
+            
+            // Hide modal
+            const modal = document.getElementById(modalId + '-modal');
+            modal.style.display = 'none';
+            modal.classList.remove('show');
         }
         
         // Close modal when clicking outside of it
@@ -384,10 +411,23 @@
             const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {
                 if (event.target === modal) {
-                    modal.style.display = 'none';
+                    // Get modal ID to close properly
+                    const modalId = modal.id.replace('-modal', '');
+                    closeModal(modalId);
                 }
             });
         }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const openModal = document.querySelector('.modal[style*="block"]');
+                if (openModal) {
+                    const modalId = openModal.id.replace('-modal', '');
+                    closeModal(modalId);
+                }
+            }
+        });
     </script>
 </body>
 </html>
