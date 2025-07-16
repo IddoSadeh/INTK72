@@ -2,25 +2,29 @@
 
 /* Main Content */
 .main-content {
-    padding: 0 0 1vh 1vw;
+    max-width: 900px;
+    padding: 4vh 3vw 2vh 9vw;
+    flex-grow: 1;
 }
 
 .content-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-weight: 500;
     line-height: 1.4;
-    margin: 0 0 1vh 0;
+    margin: 0;
 }
 
 .secondary-text {
-    margin-top: 1vh !important;
+    margin-top: 4vh !important;
     margin-bottom: 0 !important;
 }
 
 /* Categories Section */
 .categories-section {
-    padding: 0 0 0 1vw;
+    max-width: 900px;
+    padding: 4vh 3vw 2vh 9vw;
+    flex-grow: 1;
 }
 
 .category-item {
@@ -57,9 +61,12 @@
 }
 
 .bottom-text p {
+    max-width: 900px;
+    padding: 0vh 3vw 2vh 9vw;
+    flex-grow: 1;
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }

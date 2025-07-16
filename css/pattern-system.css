@@ -2,20 +2,24 @@
 
 /* Main Content */
 .main-content {
-    padding: 0 0 4vh 1vw;
+    max-width: 900px;
+    padding: 4vh 3vw 2vh 9vw;
+    flex-grow: 1;
 }
 
 .content-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }
 
 /* Grid Demo Section */
 .grid-demo-section {
-    padding: 4vh 0;
+    max-width: 900px;
+    padding: 4vh 3vw 2vh 9vw;
+    flex-grow: 1;
 }
 
 .grid-demo-container {
@@ -36,7 +40,7 @@
     text-transform: uppercase;
     transform: scaleY(1.2);
     line-height: 1.1;
-    margin: 0 0 2vh 0;
+    margin: 2vh 0 1vh 0;
 }
 
 .demo-description {
@@ -50,11 +54,9 @@
 
 .grid-visual {
     flex-shrink: 0;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .grid-video {
@@ -93,8 +95,8 @@
 
 .summary-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }
