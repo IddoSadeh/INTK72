@@ -1,6 +1,12 @@
 /* Completion Page Styles */
 
 /* Top Navigation */
+.container{
+    max-width: 900px;
+    padding-top: 3vh;
+}
+
+
 .top-nav {
     display: flex;
     justify-content: space-between;
@@ -32,7 +38,7 @@
 
 .completion-title {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-size: clamp(2rem, 9.8vw, 6.25rem);
     font-weight: 600;
     text-transform: uppercase;
     transform: scaleY(1.2);
