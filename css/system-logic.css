@@ -1,3 +1,4 @@
+/* System Logic Page Styles */
 
 /* Main Content */
 .main-content {
@@ -6,8 +7,8 @@
 
 .content-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }
@@ -31,11 +32,21 @@
 
 .section-label {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    font-weight: 500;
     color: #ff0000;
-    font-weight: 400;
     display: block;
     margin-bottom: 2vh;
+}
+
+.section-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+    line-height: 1.1;
+    margin: 0;
 }
 
 /* Shape containers */
@@ -46,7 +57,7 @@
 }
 
 .shape-svg {
-    max-width: 200px;
+    max-width: clamp(180px, 25vw, 250px);
     height: auto;
 }
 
@@ -60,7 +71,7 @@
 
 .item-number {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 600;
     color: black;
     transform: scaleY(1.2);
@@ -68,41 +79,18 @@
     flex-shrink: 0;
 }
 
-.item-content {
-    flex: 1;
-}
-
-.item-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.4rem, 2.8vw, 1.8rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    transform: scaleY(1.2);
-    margin: 0 0 1vh 0;
-    line-height: 1.1;
-}
-
 .item-text {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 600 !important;
+    font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+    font-weight: 500;
     line-height: 1.4;
     margin: 0;
     color: #333;
     flex: 1;
 }
 
-/* Dividers */
-.divider {
-    height: 1px;
-    background-color: #ccc;
-    margin: 4vh 0;
-    width: 100%;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 600px) {
-    .header-content,
     .gray-content {
         padding: 0 4vw;
     }
@@ -114,26 +102,14 @@
     .item-number {
         min-width: 1.5em;
     }
-    
-    .shape-svg {
-        max-width: 150px;
-    }
 }
 
 @media (min-width: 1200px) {
-    .header-content {
-        padding: 0 3vw 0 12vw;
-    }
-    
     .gray-content {
         padding: 0 12vw;
     }
     
     .logic-item {
         gap: 2vw;
-    }
-    
-    .shape-svg {
-        max-width: 250px;
     }
 }
