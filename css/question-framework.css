@@ -1,15 +1,16 @@
-/* Question Framework Page Styles */
+/* question-framework.css (viewport‑only sizing) */
 
-/* Main Content */
+/* Base (mobile-first) */
 .main-content {
-    max-width: 900px;
-    padding: 4vh 3vw 2vh 9vw;
+    max-width: 95vw;
+    padding: 2vh 3vw 2vh 9vw;
     flex-grow: 1;
+    margin: 0;
 }
 
 .content-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-size: 2.5vh;
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
@@ -22,7 +23,7 @@
 
 /* Categories Section */
 .categories-section {
-    max-width: 900px;
+    max-width: 90vw;
     padding: 4vh 3vw 2vh 9vw;
     flex-grow: 1;
 }
@@ -36,21 +37,17 @@
     align-items: center;
     cursor: pointer;
 }
-
 .category-item:hover {
     background-color: #ddd;
 }
-
 .category-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-family: 'FormaTextTest','Inter',sans-serif;
+    font-size: 3.5vw;
     font-weight: 600;
     text-transform: uppercase;
-    
 }
-
 .category-arrow {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: 5vw;
     font-weight: 600;
     color: #666;
 }
@@ -59,13 +56,12 @@
 .bottom-text {
     padding: 1vh 0 4vh 1vw;
 }
-
 .bottom-text p {
-    max-width: 900px;
-    padding: 0vh 3vw 2vh 9vw;
+    max-width: 95vw;
+    padding: 0 3vw 2vh 9vw;
     flex-grow: 1;
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-size: 2.5vh;
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
@@ -77,33 +73,27 @@
     width: 100vw;
     padding: 8vh 1vw;
 }
-
 .gray-content {
-    max-width: 900px;
-    margin: 0 0 0 0;
+    max-width: 95vw;
+    margin: 0;
     padding: 0 8vw;
 }
-
-.section-header {
-    margin-bottom: 4vh;
-}
-
 .section-label {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: 2.5vh;
     color: #ff0000;
     font-weight: 400;
     display: block;
     margin-bottom: 2vh;
 }
 
+/* Explanation Text */
 .explanation-text {
     margin-bottom: 6vh;
 }
-
 .explanation-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-size: 3.5vw;
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
@@ -116,23 +106,20 @@
     gap: 4vw;
     margin-bottom: 6vh;
 }
-
 .shape-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
-
 .shape-svg {
-    width: 80px;
-    height: 80px;
+    width: 10vw;
+    height: 10vw;
     margin-bottom: 2vh;
 }
-
 .shape-number {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-size: 3vw;
     font-weight: 600;
     color: black;
 }
@@ -142,14 +129,13 @@
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: calc(100% - 150px);
-    background-color: rgba(245, 245, 245, 0.95);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(245, 245, 245, 0.8);
     backdrop-filter: blur(2px);
 }
-
 .modal-content {
     background-color: transparent;
     margin: 0;
@@ -158,158 +144,145 @@
     height: 100%;
     overflow-y: auto;
 }
-
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6vh;
 }
-
 .modal-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+    font-family: 'FormaTextTest','Inter',sans-serif;
+    font-size: 4vw;
     font-weight: 600;
     text-transform: uppercase;
-    
     margin: 0;
 }
-
 .close {
-    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-size: 6vw;
     font-weight: 600;
     cursor: pointer;
     color: black;
 }
-
 .close:hover {
     opacity: 0.7;
 }
 
+/* Question Items */
 .question-item {
     display: flex;
     align-items: flex-start;
     margin-bottom: 6vh;
     gap: 10vw;
 }
-
 .question-number {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-family: 'FormaTextTest','Inter',sans-serif;
+    font-size: 6vw;
     font-weight: 600;
     color: black;
-    
     min-width: 1.5em;
     flex-shrink: 0;
 }
-
 .question-content {
     flex: 1;
 }
-
 .question-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-family: 'FormaTextTest','Inter',sans-serif;
+    font-size: 8vw;
     font-weight: 600;
     text-transform: uppercase;
-    
     line-height: 1.1;
     margin: 0 0 2vh 0;
 }
-
 .question-description {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-size: 3vw;
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
     color: #333;
 }
 
-/* Modal Enhancement Styles */
-/* Prevent body scroll when modal is open */
+/* Modal Enhancement */
 body.modal-open {
     overflow: hidden;
 }
-
-/* Blur effect for background content */
 .blur-background {
     filter: blur(3px);
     transition: filter 0.3s ease;
 }
-
-/* Smooth transition for modal appearance */
 .modal.show {
     display: block;
     animation: fadeIn 0.3s ease;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .shape-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6vw;
-    }
-    
-    .shape-svg {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .category-item {
-        padding: 2vh 4vw;
-    }
-    
-    .modal-content {
-        padding: 4vh 4vw;
-    }
-    
-    .question-item {
-        gap: 12vw;
-    }
-    
-    .question-number {
-        min-width: 1.2em;
-    }
-}
-
+/* Responsive Tweaks */
+/* Small phones */
 @media (max-width: 600px) {
     .gray-content {
         padding: 0 4vw;
     }
-    
+    .section-label {
+        font-size: 2vh;
+    }
     .shape-row {
         gap: 8vw;
     }
-    
     .modal-content {
         padding: 3vh 4vw;
     }
 }
 
-@media (min-width: 1200px) {
-    .gray-content {
-        padding: 0 12vw;
+/* Tablets (up to 768px) */
+@media (max-width: 768px) {
+    .shape-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6vw;
     }
-    
+    .category-item {
+        padding: 2vh 4vw;
+    }
+    .modal-content {
+        padding: 4vh 4vw;
+    }
+    .question-item {
+        gap: 12vw;
+    }
+    .question-number {
+        min-width: 1.2em;
+    }
+     .section-label {
+        font-size: 2.2vh;
+    }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1200px) {
+    .categories-section,
+    .main-content,
+    .gray-content {
+        max-width: 50vw;
+        margin: 0 0 0 9vw;
+        padding: 0;
+    }
+
+    .bottom-text {
+        max-width: 50vw;
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+    .section-label {
+        font-size: 2vh;
+    }
     .shape-row {
         gap: 3vw;
     }
-    
-    .shape-svg {
-        width: 100px;
-        height: 100px;
-    }
-    
     .modal-content {
         padding: 8vh 12vw;
     }
-    
     .question-item {
         gap: 4vw;
     }
