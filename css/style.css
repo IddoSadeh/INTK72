@@ -48,7 +48,8 @@ body {
 
 .page-title {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: 4vh;
+    font-size: 3.5vh;
+    padding-top: 2vh;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: underline;
@@ -131,10 +132,10 @@ footer {
     }
     .header-content {
         max-width: 90vw;
-        padding-left: 8vw; /* maintain alignment */
+        padding-left: 3vw;
     }
     .footer-content {
-        max-width: 90vw; /* restore max width on larger screens */
+        max-width: 90vw;
         padding-left: 8vw;
     }
     .container {

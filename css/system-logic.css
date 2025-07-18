@@ -100,6 +100,7 @@
         max-width: 90vw;
         margin: 0 auto;
         padding: 0 8vw;
+        padding-left: 3vw;
     }
     .shape-svg {
         width: 20vw;
