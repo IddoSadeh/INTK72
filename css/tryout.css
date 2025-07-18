@@ -4,12 +4,12 @@
 .tryout-container {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 120px); /* Account for footer */
+    padding-top: 2vh !important;
 }
 
 /* Intro Page */
 .tryout-intro {
-    padding-top: 4vh;
+    padding-top: 0vh;
     flex-grow: 1;
     display: flex;
     align-items: flex-start;
@@ -18,11 +18,11 @@
 
 .intro-text {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-size: 4vh;
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
-    max-width: 700px;
+    max-width: 80vw;
 }
 
 /* Navigation */
