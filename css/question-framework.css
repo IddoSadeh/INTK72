@@ -46,7 +46,7 @@
     font-size: clamp(1.2rem, 2.4vw, 1.6rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
 }
 
 .category-arrow {
@@ -171,7 +171,7 @@
     font-size: clamp(1.2rem, 2.4vw, 1.5rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
     margin: 0;
 }
 
@@ -198,7 +198,7 @@
     font-size: clamp(1.8rem, 3.6vw, 2.4rem);
     font-weight: 600;
     color: black;
-    transform: scaleY(1.2);
+    
     min-width: 1.5em;
     flex-shrink: 0;
 }
@@ -212,7 +212,7 @@
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
     line-height: 1.1;
     margin: 0 0 2vh 0;
 }

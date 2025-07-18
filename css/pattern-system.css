@@ -38,7 +38,7 @@
     font-size: clamp(1.8rem, 3.6vw, 2.4rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
     line-height: 1.1;
     margin: 2vh 0 1vh 0;
 }
@@ -165,7 +165,7 @@
     font-size: clamp(1.8rem, 3.6vw, 2.4rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
     margin: 0;
 }
 

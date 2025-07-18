@@ -54,7 +54,7 @@
     font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     font-weight: 600;
     color: black;
-    transform: scaleY(1.2);
+    
     min-width: 2em;
     flex-shrink: 0;
 }
@@ -69,7 +69,7 @@
     font-size: clamp(1.4rem, 2.8vw, 1.8rem);
     font-weight: 600;
     text-transform: uppercase;
-    transform: scaleY(1.2);
+    
     margin: 0 0 1vh 0;
     line-height: 1.1;
 }
