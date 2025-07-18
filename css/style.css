@@ -1,3 +1,4 @@
+/* Global Font Setup */
 @font-face {
     font-family: 'FormaTextTest';
     src: url('../assets/FormaTEXTTEST.otf') format('opentype');
@@ -14,16 +15,50 @@ body {
     background: white;
     color: black;
     min-height: 100vh;
-    max-width: 90vw;           /* iPhone cap */
+    max-width: 90vw;              /* Mobile cap */
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 }
 
-/*––––– Mobile / iPhone –––––*/
+/*––––– Header & Main –––––*/
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: transparent;
+    padding: 4vh 0 0.5vh;
+}
+
+.header-content {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 0 10vw 0 8vw; /* align left arrow with page text */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-arrow img,
+.forward-arrow img {
+    width: 4vh;
+    height: 4vh;
+    filter: brightness(0);
+}
+
+.page-title {
+    font-family: 'FormaTextTest', 'Inter', sans-serif;
+    font-size: 4vh;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.5vh;
+    mix-blend-mode: exclusion;
+}
+
 .container {
     max-width: 95vw;
-    padding: 10vh 0vw 2vh 8vw;
+    padding: 10vh 0 2vh 8vw;
     flex-grow: 1;
 }
 
@@ -57,76 +92,28 @@ main p {
     line-height: 1;
 }
 
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: transparent;
-    padding: 4vh 0 0.5vh 0;
-}
-
-.header-content {
-    max-width: 90vw;
-    margin: 0 auto;
-    padding: 0 10vw 0 3vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.back-arrow,
-.forward-arrow {
-    flex-shrink: 0;
-    display: block;
-}
-
-.back-arrow img,
-.forward-arrow img {
-    width: 4vh;
-    height: 4vh;
-    display: block;
-    filter: brightness(0);
-}
-
-.page-title {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 0.5vh;
-    margin: 0;
-    mix-blend-mode: exclusion;
-}
-
+/*––––– Footer –––––*/
 footer {
     position: sticky;
     bottom: 0;
     background: white;
     border-top: 0.1vh solid #e0e0e0;
     padding: 2vh 0;
-    width: 100%;
+    width: 100vw; /* ensure footer spans full viewport width */
+    overflow-x: hidden;
 }
 
 .footer-content {
-    max-width: 90vw;
+    width: 100vw; /* span full width on mobile */
     padding: 0 1vw 0 8vw;
     display: flex;
     align-items: flex-start;
     gap: 1em;
 }
 
-.logo {
-    line-height: 0;
-    font-size: 0;
-    flex-shrink: 0;
-}
-
 .logo-icon {
-    filter: invert(1);
     height: 2vh;
-    display: block;
-    vertical-align: top;
+    filter: invert(1);
 }
 
 .footer-text {
@@ -137,34 +124,76 @@ footer {
     flex: 1;
 }
 
-/*––––– iPad overrides @ ≥768px –––––*/
+/*––––– iPad (≥768px) –––––*/
 @media (min-width: 768px) {
     body {
-        max-width: none;  /* drop the mobile cap */
+        max-width: none;
     }
-
+    .header-content {
+        max-width: 90vw;
+        padding-left: 8vw; /* maintain alignment */
+    }
+    .footer-content {
+        max-width: 90vw; /* restore max width on larger screens */
+        padding-left: 8vw;
+    }
     .container {
         padding: 10vh 3vw 2vh 8vw;
     }
-
     h1 {
         font-size: 7vh;
-        margin-bottom: 4vh;
     }
-
     nav a {
         font-size: 3.5vh;
     }
-
     main p {
         font-size: 2.5vh;
     }
+    .page-title {
+        font-size: 5vh;
+    }
+    .back-arrow img,
+    .forward-arrow img {
+        width: 5vh;
+        height: 5vh;
+    }
+    .page-title{
+        text-underline-offset: 1vh;
+        padding-top: 3vh;
+    }
+    .sticky-header{
+        padding-top: 2vh;
+    }
 }
 
-/* ––– large screens (horizontal iPad, desktop) ––– */
+/*––– Large Screens (≥1200px) –––*/
 @media (min-width: 1200px) {
-  .container,
-  .footer-content {
-    max-width: 50vw;
-  }
+    .container,
+    .footer-content {
+        max-width: 50vw;        
+    }
+        .header-content {
+        max-width: 50vw;
+        margin: 0 0 0 9vw;     /* left-align header */
+        padding: 0;            /* remove horizontal padding override */
+    }
+    h1 {
+        margin-bottom: 6vh;
+    }
+    nav {
+        margin-bottom: 3vh;
+        gap: 2vw;
+    }
+    nav a {
+        font-size: 3vh;
+    }
+    .page-title {
+        font-size: 6vh;
+    }
+    .back-arrow img,
+    .forward-arrow img {
+        width: 4vh;
+        height: 4vh;
+    }
+
 }
