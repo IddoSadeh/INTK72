@@ -1,128 +1,86 @@
-/* Pattern System Page Styles */
+/* pattern-system.css (viewport‑only sizing) */
 
-/* Main Content */
+/* Base (mobile-first) */
 .main-content {
-    max-width: 900px;
-    padding: 4vh 3vw 2vh 9vw;
+    max-width: 95vw;
+    padding: 2vh 3vw 0vh 9vw;
     flex-grow: 1;
+    margin: 0;
 }
 
-.content-text p {
+.grid-demo-section {
+    max-width: 95vw;
+    padding: 0vh 3vw 6vh 9vw;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.content-text p,
+.summary-text p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 3.2vw, 3rem);
+    font-size: 2.5vh;
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
 }
 
 /* Grid Demo Section */
-.grid-demo-section {
-    max-width: 900px;
-    padding: 4vh 3vw 2vh 9vw;
-    flex-grow: 1;
-}
-
 .grid-demo-container {
     display: flex;
     align-items: flex-start;
-    gap: 6vw;
-    margin-bottom: 4vh;
+    gap: 0vw;
+    margin-bottom: 0vh;
 }
-
 .grid-text {
     flex: 1;
 }
-
 .demo-title {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    
-    line-height: 1.1;
-    margin: 2vh 0 1vh 0;
-}
-
-.demo-description {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-size: 4vw;
     font-weight: 600;
     line-height: 1.4;
-    margin: 0;
+    margin: 4vh 5vw 1vh 0;
+}
+.demo-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 2vw;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 4vh 6vw 1vh 0;
     color: #666;
 }
-
 .grid-visual {
     flex-shrink: 0;
-    width: 400px;
-    height: 400px;
+    width: 50vw;
     display: flex;
 }
-
 .grid-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Fallback Grid */
-.grid-fallback {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.grid-3x3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
-}
-
-.grid-cell {
-    border: 1px solid #ccc;
-    background-color: white;
+    width: 50vw;
 }
 
 .summary-text {
     margin-top: 2vh;
 }
 
-.summary-text p {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 3.2vw, 3rem);
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
-}
-
 /* Gray Section */
 .gray-section {
     background-color: #F6F7D2;
     width: 100vw;
-    padding: 8vh 1vw;
+    padding: 4vh 1vw;
 }
-
 .gray-content {
-    max-width: 900px;
-    margin: 0 0 0 0;
+    max-width: 95vw;
+    margin: 0;
     padding: 0 8vw;
 }
-
 .section-header {
     margin-bottom: 6vh;
 }
-
 .section-label {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: 2vh;
+    font-weight: 500;
     color: #ff0000;
-    font-weight: 400;
     display: block;
     margin-bottom: 2vh;
 }
@@ -133,122 +91,146 @@
     align-items: flex-start;
     gap: 6vw;
 }
-
 .level-visual {
     flex-shrink: 0;
-    width: 200px;
-    height: 200px;
+    width: 30vw;
+    height: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .level-svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
 .level-content {
     flex: 1;
 }
-
 .level-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 3vh;
 }
-
 .level-title {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-size: 4vw;
     font-weight: 600;
     text-transform: uppercase;
-    
     margin: 0;
 }
-
 .level-arrow {
     background: #e0e0e0;
     border: none;
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    font-weight: 600;
-    padding: 0.4em 0.8em;
+    padding: 1vh 2vw;
     cursor: pointer;
-    border-radius: 0;
-    color: black;
-    min-width: 40px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.arrow-icon {
+    width: 6vw;
+    height: 2.5vh;
+}
 .level-arrow:hover {
     background: #ccc;
 }
-
-.level-arrow.curved-arrow {
-    background: #e0e0e0;
-}
-
 .level-description {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-size: 3vw;
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+/* iPhone (small screens) */
+@media (max-width: 600px) {
+    .main-content {
+        padding: 2vh 2vw 0 2vw;
+        max-width: 98vw;
+    }
+    .grid-demo-section {
+        padding: 0 2vw 4vh 2vw;
+    }
     .grid-demo-container {
         flex-direction: column;
         gap: 4vh;
+        margin-bottom: 4vh;
     }
-    
     .grid-visual {
-        width: 250px;
-        height: 250px;
-        align-self: center;
+        width: 80vw;
     }
-    
+    .grid-video {
+        width: 80vw;
+    }
+    .demo-title {
+        font-size: 6vw;
+        margin: 3vh 0;
+    }
+    .demo-description {
+        font-size: 4vw;
+        margin: 3vh 0;
+    }
     .level-container {
         flex-direction: column;
         gap: 4vh;
     }
-    
     .level-visual {
-        width: 150px;
-        height: 150px;
-        align-self: center;
+        width: 60vw;
+        height: 60vw;
     }
-    
-    .level-header {
-        justify-content: center;
+    .level-title {
+        font-size: 8vw;
     }
-}
-
-@media (max-width: 600px) {
-    .gray-content {
-        padding: 0 4vw;
-    }
-    
-    .grid-visual {
-        width: 200px;
-        height: 200px;
+    .level-description {
+        font-size: 5vw;
     }
 }
 
+/* Desktop (large screens) */
 @media (min-width: 1200px) {
-    .gray-content {
-        padding: 0 12vw;
+    .main-content {
+        max-width: 60vw;
+        padding: 4vh 5vw;
     }
-    
+    .grid-demo-section {
+        max-width: 60vw;
+        padding: 2vh 5vw 6vh 5vw;
+    }
+    .grid-demo-container {
+        gap: 8vw;
+    }
+    .grid-visual {
+        width: 40vw;
+    }
+    .grid-video {
+        width: 40vw;
+    }
+    .demo-title {
+        font-size: 3vw;
+        margin: 4vh 2vw 1vh 0;
+    }
+    .demo-description {
+        font-size: 1.8vw;
+        margin: 4vh 2vw 1vh 0;
+    }
     .level-container {
         gap: 4vw;
+        width: 50vw;
     }
-    
     .level-visual {
-        width: 250px;
-        height: 250px;
+        width: 20vw;
+        height: 20vw;
     }
+    .level-title {
+        font-size: 2.5vw;
+    }
+    .level-description {
+        font-size: 1.8vw;
+    }
+    .arrow-icon {
+    width: 2vw;
+    height: 2.5vh;
+}
 }
