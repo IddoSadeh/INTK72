@@ -80,7 +80,7 @@
 }
 .section-label {
     font-family: 'Inter', sans-serif;
-    font-size: 2.5vh;
+    font-size: 2.2vh;
     color: #ff0000;
     font-weight: 400;
     display: block;
@@ -255,7 +255,7 @@ body.modal-open {
         min-width: 1.2em;
     }
      .section-label {
-        font-size: 2.2vh;
+        font-size: 2vh;
     }
 }
 
