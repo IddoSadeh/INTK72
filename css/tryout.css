@@ -329,44 +329,48 @@
 }
 
 .answer-option {
-    background-color: white;
-    border: 0.2vh solid #999;
-    padding: 2vh 2.5vw;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 2vw;
-    font-weight: 600;
-    color: black;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    text-align: left;
-    min-height: 8vh;
-    width: 100%;
+  background-color: #f1f1f1;       /* light grey bg */
+  border: none;                    /* no border */
+  padding: 1.5vh 2.5vw;            /* reduced vertical padding */
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 2vw;
+  font-weight: 600;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;     /* force left alignment */
+  gap: 2vw;                        /* space between icon & text */
+  text-align: left;                /* for any wrapped text */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .answer-option:hover {
-    border-color: #666;
+    background-color: #e6e6e6;     /* subtle hover feedback */
 }
 
 .answer-option.selected {
-    border-color: #ff0000;
-    background-color: white;
+   background-color: #F6F7D2;
 }
 
 .answer-icon {
-    width: 4vw;
-    height: 4vw;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.1vh solid #ccc;
-    background-color: white;
+  background-color: #f1f1f1;       /* match option bg */
+  border: none;
+  flex-shrink: 0;
+  width: 4vw;
+  height: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.answer-option.selected .answer-icon {
+    background-color: #F6F7D2;
+}
 .answer-icon img {
+    display: block;
+    margin: 0;
     width: 2.5vw;
     height: 2.5vw;
 }
@@ -374,6 +378,28 @@
 .answer-text {
     flex: 1;
 }
+
+/* ─── Progress Bar (background approach) ───────────────────────── */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 1vh;               /* your desired thickness */
+  background-color: #000 !important;    /* solid black “track” */
+  margin: 2vh 0;
+  --progress: 0%;            /* fallback */
+}
+
+.progress-bar .progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress);    /* 0–100% */
+  background-color: #888888;    /* dark‑gray “fill” */
+  pointer-events: none;      /* clicks still land on options */
+}
+
+
 
 /* Selection Feedback */
 .selection-feedback {
@@ -601,13 +627,11 @@
 
     .answer-options {
         gap: 2vh;
-        margin-bottom: 3vh;
+        margin-bottom: 5vh;
     }
-
     .answer-option {
-        padding: 2vh 4vw;
+        padding: 1vh 2vw;
     }
-
     .current-selection {
         gap: 4vw;
     }

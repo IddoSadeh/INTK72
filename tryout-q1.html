@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tryout.css">
 </head>
+
 <body>
     <div class="container tryout-container">
         <!-- Main Content -->
@@ -48,6 +50,9 @@
                     </button>
                 </div>
             </div>
+            <div class="progress-bar" style="--progress: 0%;">
+                <div class="progress-fill"></div>
+            </div>
 
             <!-- Selection Feedback -->
             <div class="selection-feedback">
@@ -66,10 +71,10 @@
         <!-- Navigation -->
         <div class="tryout-navigation">
             <a href="routine-mapping.html" class="nav-arrow back-arrow">
-            <img src="assets/arrow-left.svg" alt="Go back">
+                <img src="assets/arrow-left.svg" alt="Go back">
             </a>
             <a href="tryout-q2.html" class="nav-arrow forward-arrow">
-            <img src="assets/arrow-right.svg" alt="Go forward">
+                <img src="assets/arrow-right.svg" alt="Go forward">
             </a>
         </div>
     </div>
@@ -81,7 +86,9 @@
                 <img src="assets/logo.svg" alt="INTK72 Logo" class="logo-icon">
             </div>
             <p class="footer-text">
-              Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and reducing stress through pre-established logic. Established 2025.
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional
+                balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and
+                reducing stress through pre-established logic. Established 2025.
             </p>
         </div>
     </footer>
@@ -116,32 +123,32 @@
         function setupAnswerSelection() {
             const answerOptions = document.querySelectorAll('.answer-option');
             const selectedShapeDisplay = document.getElementById('selected-shape-display');
-            
+
             answerOptions.forEach(option => {
-                option.addEventListener('click', function() {
+                option.addEventListener('click', function () {
                     const question = this.getAttribute('data-question');
                     const answer = this.getAttribute('data-answer');
                     const shape = this.getAttribute('data-shape');
-                    
+
                     // Remove selection from all options
                     answerOptions.forEach(opt => opt.classList.remove('selected'));
-                    
+
                     // Add selection to clicked option
                     this.classList.add('selected');
-                    
+
                     // Store the answer
                     window.intk72UserData.answers[`q${question}`] = {
                         answer: answer,
                         shape: shape,
                         text: this.querySelector('.answer-text').textContent
                     };
-                    
+
                     // Save to sessionStorage
                     saveUserData();
-                    
+
                     // Display selected shape
                     selectedShapeDisplay.innerHTML = `<img src="assets/shapes/${shape}.svg" alt="Selected shape" class="selected-shape-icon">`;
-                    
+
                     console.log('Question 1 answered:', window.intk72UserData.answers[`q${question}`]);
                     console.log('All user data:', window.intk72UserData);
                 });
@@ -154,7 +161,7 @@
                 const savedAnswer = window.intk72UserData.answers.q1;
                 const answerButton = document.querySelector(`[data-answer="${savedAnswer.answer}"]`);
                 const selectedShapeDisplay = document.getElementById('selected-shape-display');
-                
+
                 if (answerButton) {
                     answerButton.classList.add('selected');
                     selectedShapeDisplay.innerHTML = `<img src="assets/shapes/${savedAnswer.shape}.svg" alt="Selected shape" class="selected-shape-icon">`;
@@ -163,13 +170,34 @@
         }
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeUserData();
             setupAnswerSelection();
             loadPreviousSelection();
-            
+
             console.log('Question 1 page loaded. Current data:', window.intk72UserData);
         });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+      const totalQuestions = 9;
+      const pageNum = Number(document.body.dataset.questionPage) || 1;
+      const bar = document.querySelector('.progress-bar');
+      const opts = document.querySelectorAll('.answer-option');
+
+      opts.forEach(opt => {
+        opt.addEventListener('click', () => {
+          // ensure only one selected per question
+          opts.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+
+          // update progress
+          const pct = ((pageNum / totalQuestions) * 100).toFixed(2) + '%';
+          bar.style.setProperty('--progress', pct);
+        });
+      });
+    });
     </script>
 </body>
+
 </html>
