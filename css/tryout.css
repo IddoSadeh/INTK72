@@ -130,7 +130,7 @@
 .form-input,
 .form-select {
   width: 100%;
-  padding: 1.5vh 2.5vw;    /* less top/bottom padding */
+  padding: 1.5vh 2.5vw;    
   background-color: #f1f1f1;
   border: none;
   font-family: 'Inter', sans-serif;
@@ -138,12 +138,16 @@
   font-weight: 600;
   color: black;
   box-sizing: border-box;
+  min-height: calc(3vh + 2vw);
+  line-height: 1.2;
 }
 
 /* preserve your custom arrow */
 .form-select {
   padding-right: 2.5vw;
   padding-left: 2vw;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* focus ring */
