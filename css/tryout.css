@@ -93,7 +93,7 @@
 .identification-form {
   display: flex;
   flex-direction: column;
-  gap: 2vh;                /* space between each “row” */
+  gap: 2vh;                
 }
 
 /* Row 1: First + Last */
@@ -182,6 +182,13 @@
 .gender-option.selected {
   background-color: #F6F7D2;  /* yellow when clicked */
 }
+
+/* Green‑out any field once it has content */
+.form-input.filled,
+.form-select.filled {
+  background-color: #DFF0D8;   /* pale green – adjust to taste */
+}
+
 
 /* Selection Options (Consumption Limits Page) */
 .selection-section {

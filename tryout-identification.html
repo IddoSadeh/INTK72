@@ -424,6 +424,20 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('continue-btn').addEventListener('click', function(){
         saveCurrentData();
     });
+      const fields = document.querySelectorAll('.form-input, .form-select');
+  fields.forEach(field => {
+    const toggleFilled = () => {
+      if (field.value && field.value !== '') {
+        field.classList.add('filled');
+      } else {
+        field.classList.remove('filled');
+      }
+    };
+    field.addEventListener('input',  toggleFilled);
+    field.addEventListener('change', toggleFilled);
+    // initialize state on load
+    toggleFilled();
+  });
 });
 </script>
 
