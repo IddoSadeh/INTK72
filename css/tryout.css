@@ -19,10 +19,11 @@
 .intro-text {
     font-family: 'Inter', sans-serif;
     font-size: 4vh;
-    font-weight: 600;
-    line-height: 1.4;
+    font-weight: 500;
+    line-height: 1.2;
     margin: 0;
     max-width: 80vw;
+    padding-left: 3vw;
 }
 
 /* Navigation */
