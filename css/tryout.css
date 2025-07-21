@@ -4,7 +4,7 @@
 .tryout-container {
     display: flex;
     flex-direction: column;
-    padding-top: 2vh !important;
+    padding-top: 0vh !important;
 }
 
 /* Intro Page */
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4vh;
+    margin-bottom: 1vh;
     margin-top: auto;
 }
 
@@ -61,7 +61,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding-bottom: 4vh;
+    padding-bottom: 0vh;
 }
 
 .form-header {
@@ -281,7 +281,7 @@
 
 .question-section {
     flex-grow: 1;
-    margin-bottom: 4vh;
+    margin-bottom: 0vh;
 }
 
 .question-info {
@@ -373,7 +373,7 @@
 .progress-bar {
   position: relative;
   width: 100%;
-  height: 1vh;               /* your desired thickness */
+  height: 2vh;               /* your desired thickness */
   background-color: #000 !important;    /* solid black “track” */
   margin: 2vh 0;
   --progress: 0%;            /* fallback */
@@ -458,39 +458,28 @@
 
 /* Answering Guide Section */
 .guide-section {
-    background-color: #f5f5f5;
-    padding: 4vh 3vw;
+    background-color: white;
+    padding: 4vh 0vw;
     margin-bottom: 4vh;
-}
-
-.guide-header {
-    margin-bottom: 4vh;
-}
-
-.guide-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.5vw;
-    color: #ff0000;
-    font-weight: 400;
-    display: block;
 }
 
 .guide-items {
     display: flex;
     flex-direction: column;
-    gap: 5vh;
+    gap: 8vh;
+    padding-right: 4vw;
 }
 
 .guide-item {
     display: flex;
     align-items: flex-start;
-    gap: 3vw;
+    gap: 10vw;
 }
 
 .guide-number {
-    font-family: 'FormaTextTest', 'Inter', sans-serif;
-    font-size: 3.5vw;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 4vw;
+    font-weight: 500;
     color: black;
     min-width: 2em;
     flex-shrink: 0;
@@ -502,9 +491,9 @@
 
 .guide-text {
     font-family: 'Inter', sans-serif;
-    font-size: 2.3vw;
-    font-weight: 600;
-    line-height: 1.4;
+    font-size: 3vw;
+    font-weight: 500;
+    line-height: 1.2;
     margin: 0;
     color: black;
 }
@@ -549,7 +538,6 @@
     }
 
     .form-header,
-    .guide-header,
     .question-header,
     .review-header {
         margin-bottom: 4vh;
@@ -607,7 +595,7 @@
     }
 
     .tryout-navigation {
-        margin-bottom: 3vh;
+        margin-bottom: 1vh;
     }
 
     .question-section {
@@ -640,7 +628,7 @@
     .form-content,
     .question-content,
     .review-content {
-        padding: 6vh 0;
+        padding: 0vh 0;
     }
 
     .intro-text {
@@ -648,7 +636,6 @@
     }
 
     .form-header,
-    .guide-header,
     .question-header,
     .review-header {
         margin-bottom: 8vh;
@@ -690,7 +677,7 @@
     }
 
     .tryout-navigation {
-        margin-bottom: 6vh;
+        margin-bottom: 1vh;
     }
 
     .question-section {
