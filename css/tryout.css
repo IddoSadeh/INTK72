@@ -141,7 +141,6 @@
 
 /* preserve your custom arrow */
 .form-select {
-
   padding-right: 2.5vw;
   padding-left: 2vw;
 }
@@ -185,7 +184,7 @@
 
 /* Selection Options (Consumption Limits Page) */
 .selection-section {
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
 }
 
 .allergies-section {
@@ -202,10 +201,10 @@
 
 /* Flexbox layout for both dietary and allergies */
 .selection-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2vh 2vw;
-    margin-bottom: 4vh;
+  display: grid !important;
+  grid-template-columns: repeat(2,max-content);
+  grid-auto-rows: auto;
+  gap: 2vh 2vw;
 }
 
 .selection-option {
@@ -215,9 +214,12 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 1.5vw;               
+  gap: 3.5vw;               
   text-align: left;
   box-sizing: border-box;
+  width: fit-content; 
+  max-width: none;            
+  justify-content: flex-start; 
 }
 
 .selection-option:hover {
@@ -250,7 +252,7 @@
 .selection-option .option-text {
   flex: 1;
   font-family: 'Inter', sans-serif;
-  font-size: 2vw;
+  font-size: 2.5vw;
   margin: 0;  
 }
 
@@ -539,7 +541,7 @@
     .form-content,
     .question-content,
     .review-content {
-        padding: 3vh 0;
+        padding: 0vh 0;
     }
 
     .intro-text {
@@ -576,7 +578,7 @@
     }
 
     .form-group.half-width {
-        margin-bottom: 4vh;
+        margin-bottom: 0vh;
     }
 
     .date-row,
