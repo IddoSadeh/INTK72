@@ -750,7 +750,7 @@ button,
   appearance: none;
   /* keep your existing padding, background, etc. */
   /* if you want your own arrow, add something like: */
-  /* background: #f1f1f1 url('../assets/arrow-down.svg') no-repeat right 2vw center; */
+   background: #f1f1f1 url('../assets/arrow-down.svg') no-repeat right 2vw center; 
   /* background-size: 1.5em; */
 }
 
