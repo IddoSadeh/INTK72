@@ -3,7 +3,7 @@
 /* Base (mobile-first) */
 .main-content {
     max-width: 95vw;
-    padding: 2vh 3vw 2vh 9vw;
+    padding: 2vh 3vw 0vh 9vw;
     flex-grow: 1;
     margin: 0;
 }
@@ -71,12 +71,15 @@
 .gray-section {
     background-color: #F6F7D2;
     width: 100vw;
-    padding: 8vh 1vw;
+    padding: 8vh 1vw 2vh;
 }
 .gray-content {
     max-width: 95vw;
     margin: 0;
     padding: 0 8vw;
+}
+.gray-content .shape-row:last-child {
+  margin-bottom: 0;
 }
 .section-label {
     font-family: 'Inter', sans-serif;
@@ -111,6 +114,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    filter: brightness(0) contrast(2);
 }
 .shape-svg {
     width: 10vw;
