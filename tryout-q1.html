@@ -10,7 +10,7 @@
 </head>
 
 <body>
-        <header class="sticky-header">
+    <header class="sticky-header">
         <div class="header-content">
             <h1 class="page-title">ROUTINE MAPPING</h1>
         </div>
@@ -20,7 +20,9 @@
         <main class="form-content">
             <div class="form-header">
                 <p class="form-description">
-                    This is the starting point of your intake configuration. You'll answer 9 questions, each shaping a specific part of your intake pattern. Your responses will be used to build a visual and functional structure that reflects your eating habits.
+                    This is the starting point of your intake configuration. You'll answer 9 questions, each shaping a
+                    specific part of your intake pattern. Your responses will be used to build a visual and functional
+                    structure that reflects your eating habits.
                 </p>
             </div>
 
@@ -187,23 +189,23 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-      const totalQuestions = 9;
-      const pageNum = Number(document.body.dataset.questionPage) || 1;
-      const bar = document.querySelector('.progress-bar');
-      const opts = document.querySelectorAll('.answer-option');
+            const totalQuestions = 9;
+            const pageNum = Number(document.body.dataset.questionPage) || 1;
+            const bar = document.querySelector('.progress-bar');
+            const opts = document.querySelectorAll('.answer-option');
 
-      opts.forEach(opt => {
-        opt.addEventListener('click', () => {
-          // ensure only one selected per question
-          opts.forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
+            opts.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    // ensure only one selected per question
+                    opts.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
 
-          // update progress
-          const pct = ((pageNum / totalQuestions) * 100).toFixed(2) + '%';
-          bar.style.setProperty('--progress', pct);
+                    // update progress
+                    const pct = ((pageNum / totalQuestions) * 100).toFixed(2) + '%';
+                    bar.style.setProperty('--progress', pct);
+                });
+            });
         });
-      });
-    });
     </script>
 </body>
 

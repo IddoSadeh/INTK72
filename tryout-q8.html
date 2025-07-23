@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tryout.css">
 </head>
-<body>
+<body data-question-page="8">
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1 class="page-title">ROUTINE MAPPING</h1>
+        </div>
+    </header>
     <div class="container tryout-container">
         <!-- Main Content -->
-        <main class="question-content">
-            <div class="question-header">
-                <h1 class="question-main-title">YOU ARE NOW CONFIGURING YOUR INTAKE PATTERN.</h1>
+        <main class="form-content">
+            <div class="form-header">
+                <p class="form-description">
+                    This is the starting point of your intake configuration. You'll answer 9 questions, each shaping a
+                    specific part of your intake pattern. Your responses will be used to build a visual and functional
+                    structure that reflects your eating habits.
+                </p>
             </div>
 
             <div class="question-section">
@@ -48,6 +57,10 @@
                     </button>
                 </div>
             </div>
+            
+            <div class="progress-bar" style="--progress: 77.78%;">
+                <div class="progress-fill"></div>
+            </div>
 
             <!-- Selection Feedback -->
             <div class="selection-feedback">
@@ -66,10 +79,10 @@
         <!-- Navigation -->
         <div class="tryout-navigation">
             <a href="tryout-q7.html" class="nav-arrow back-arrow">
-            <img src="assets/arrow-left.svg" alt="Go back">
+                <img src="assets/arrow-left.svg" alt="Go back">
             </a>
             <a href="tryout-q9.html" class="nav-arrow forward-arrow">
-            <img src="assets/arrow-right.svg" alt="Go forward">
+                <img src="assets/arrow-right.svg" alt="Go forward">
             </a>
         </div>
     </div>
@@ -81,10 +94,13 @@
                 <img src="assets/logo.svg" alt="INTK72 Logo" class="logo-icon">
             </div>
             <p class="footer-text">
-              Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and reducing stress through pre-established logic. Established 2025.
+                Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional
+                balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and
+                reducing stress through pre-established logic. Established 2025.
             </p>
         </div>
     </footer>
+
     <script>
         // Initialize user data storage with sessionStorage
         function initializeUserData() {
@@ -141,7 +157,7 @@
                     // Display selected shape
                     selectedShapeDisplay.innerHTML = `<img src="assets/shapes/${shape}.svg" alt="Selected shape" class="selected-shape-icon">`;
                     
-                    console.log('question 8 answered:', window.intk72UserData.answers[`q${question}`]);
+                    console.log('Question 8 answered:', window.intk72UserData.answers[`q${question}`]);
                     console.log('All user data:', window.intk72UserData);
                 });
             });
@@ -167,7 +183,26 @@
             setupAnswerSelection();
             loadPreviousSelection();
             
-            console.log('question 8 page loaded. Current data:', window.intk72UserData);
+            console.log('Question 8 page loaded. Current data:', window.intk72UserData);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalQuestions = 9;
+            const pageNum = Number(document.body.dataset.questionPage) || 8;
+            const bar = document.querySelector('.progress-bar');
+            const opts = document.querySelectorAll('.answer-option');
+
+            opts.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    // ensure only one selected per question
+                    opts.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+
+                    // update progress
+                    const pct = ((pageNum / totalQuestions) * 100).toFixed(2) + '%';
+                    bar.style.setProperty('--progress', pct);
+                });
+            });
         });
     </script>
 </body>
