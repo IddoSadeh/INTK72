@@ -9,13 +9,28 @@
     <script src="https://cdn.jsdelivr.net/npm/clipper-lib@6.4.2/clipper.min.js"></script>
 </head>
 <body>
-    <div class="container tryout-container">
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1 class="page-title">ROUTINE MAPPING</h1>
+        </div>
+    </header>
+    <div class="container tryout-container"">
         <!-- Main Content -->
-        <main class="results-content">
-            <div class="results-header">
-                <h1 class="results-title">PROFILE SUMMARY</h1>
+        <main class="form-content">
+            <div class="form-header">
+                <p class="form-description">
+                    This is the starting point of your intake configuration. You'll answer 9 questions, each shaping a
+                    specific part of your intake pattern. Your responses will be used to build a visual and functional
+                    structure that reflects your eating habits.
+                </p>
             </div>
 
+        </main>
+    </div>
+
+    <!-- Background Section Container - Full Width -->
+    <div class="background-section-fullwidth">
+        <div class="background-content-container" style="padding-left: 10vw;">
             <!-- User Identification Section -->
             <div class="identification-section">
                 <h2 class="section-title">USER IDENTIFICATION</h2>
@@ -33,7 +48,7 @@
                         </div>
                     </div>
                     
-                    <div class="input-index">
+                    <div class="input-index" style="display:none">
                         <p><strong>Input Index:</strong></p>
                         <p id="input-index-values"><!-- Will be populated --></p>
                     </div>
@@ -52,6 +67,11 @@
                 <a href="#" class="action-link" onclick="showPrintModal(); return false;">PRINT OUTPUT</a>
                 <a href="#" class="action-link" onclick="completeFlow(); return false;">COMPLETE</a>
             </div>
+        </div>
+    </div>
+
+    <div class="container tryout-container">
+        <main class="form-content">
         </main>
     </div>
 
@@ -95,6 +115,20 @@
     </footer>
 
  <style>
+        /* Background Section - Full Width */
+        .background-section-fullwidth {
+            background-color: rgba(241, 241, 241, 1);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 4vh 0;
+        }
+
+        .background-content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
         /* Results Page Styles */
         .results-content {
             padding-top: 4vh;
@@ -344,6 +378,10 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+            .background-content-container {
+                padding: 0 3vw;
+            }
+            
             .pattern-section {
                 flex-direction: column;
                 gap: 3vh;
