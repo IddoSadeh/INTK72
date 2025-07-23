@@ -27,7 +27,8 @@ body {
     top: 0;
     z-index: 100;
     background: transparent;
-    padding: 4vh 0 1.5vh;
+    padding: 4vh 0 1.5vh; 
+    mix-blend-mode: exclusion;
 }
 
 .header-content {
@@ -43,7 +44,6 @@ body {
 .forward-arrow img {
     width: 4vh;
     height: 4vh;
-    filter: brightness(0);
 }
 
 .page-title {
@@ -58,8 +58,10 @@ body {
     text-transform: uppercase;
     text-decoration: underline;
     text-underline-offset: 0.5vh;
-    mix-blend-mode: exclusion;
+    color:white;
+    -webkit-text-fill-color: white;
 }
+
 
 .container {
     max-width: 95vw;
