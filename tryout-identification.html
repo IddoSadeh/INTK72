@@ -243,13 +243,6 @@
                 <div class="form-group">
                     <label class="form-label">Date of Birth</label>
                     <div class="date-row">
-                        <select id="birthDay" name="birthDay" class="form-select date-select" required>
-                            <option value="">DD</option>
-                            <!-- days 01-31 -->
-                            <option value="01">01</option>
-                           
-                            <option value="31">31</option>
-                        </select>
                         <select id="birthMonth" name="birthMonth" class="form-select date-select" required>
                             <option value="">MM</option>
                             <option value="01">01</option>
@@ -265,6 +258,14 @@
                             <option value="01">11</option>
                             <option value="12">12</option>
                         </select>
+                        <select id="birthDay" name="birthDay" class="form-select date-select" required>
+                            <option value="">DD</option>
+                            <!-- days 01-31 -->
+                            <option value="01">01</option>
+                           
+                            <option value="31">31</option>
+                        </select>
+                        
                         <select id="birthYear" name="birthYear" class="form-select date-select year-select" required>
                             <option value="">YYYY</option>
                         </select>
