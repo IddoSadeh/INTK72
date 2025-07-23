@@ -54,7 +54,7 @@
 /* Mobile (small screens) */
 @media (max-width: 600px) {
     .overview-content {
-        padding-top: 5vh;
+        padding-top: 2vh;
     }
 
     .system-list li {
@@ -75,7 +75,7 @@
 /* Medium screens */
 @media (min-width: 600px) and (max-width: 1199px) {
     .overview-content {
-        padding-top: 8vh;
+        padding-top: 2vh;
     }
 
     .system-list li {
