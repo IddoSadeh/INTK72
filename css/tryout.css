@@ -185,13 +185,13 @@
   background-color: #e6e6e6;
 }
 .gender-option.selected {
-  background-color: #F6F7D2;  /* yellow when clicked */
+  background-color: #DFF0D8; 
 }
 
 /* Green‑out any field once it has content */
 .form-input.filled,
 .form-select.filled {
-  background-color: #DFF0D8;   /* pale green – adjust to taste */
+  background-color: #DFF0D8;   
 }
 
 
