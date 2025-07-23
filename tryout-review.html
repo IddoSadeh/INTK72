@@ -22,10 +22,30 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      border: 0.2vh solid black;
+      border: 0.3vh solid black;
       background: white;
       aspect-ratio: 1/1;
     }
+
+    /* Hide the entire border on the center cell (cell 5) */
+    .shape-item:nth-child(5) {
+      border: none;
+    }
+
+    /* For cells 2 and 8 (middle of top/bottom rows), remove left+right borders */
+    .shape-item:nth-child(2),
+    .shape-item:nth-child(8) {
+      border-left: none;
+      border-right: none;
+    }
+
+    /* For cells 4 and 6 (middle of left/right columns), remove top+bottom borders */
+    .shape-item:nth-child(4),
+    .shape-item:nth-child(6) {
+      border-top: none;
+      border-bottom: none;
+    }
+
 
     .shape-item .shape-svg {
       width: 100%;
@@ -37,12 +57,12 @@
       left: 0.5vw;
       font-family: 'Inter', sans-serif;
       font-size: 2vw;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .modal {
       background-color: rgba(128, 128, 128, 0);
-  
+
     }
 
     .modal-content {
@@ -57,7 +77,6 @@
       padding: 2vh 3vw;
       padding-left: 6vw;
       overflow-y: auto;
-      box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
       box-sizing: border-box;
     }
 
@@ -121,7 +140,7 @@
 
     .modal-footer {
       display: flex;
-      width:65vw;
+      width: 65vw;
       justify-content: space-between;
     }
 
