@@ -308,7 +308,7 @@
 
 .question-number {
     font-family: 'Inter', sans-serif;
-    font-size: 4vw;
+    font-size: 4.3vw;
     font-weight: 500;
     color: black;
     flex-shrink: 0;
@@ -317,7 +317,7 @@
 
 .question-title {
     font-family: 'Inter', sans-serif;
-    font-size: 4vw;
+    font-size: 4.3vw;
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
