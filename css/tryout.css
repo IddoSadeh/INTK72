@@ -724,3 +724,40 @@
         margin-bottom: 6vh;
     }
 }
+
+
+/* ── iOS Safari resets for buttons ───────────────────────────────── */
+
+/* target all buttons you’re using (including modal‑links, gender, answer, selection buttons) */
+button,
+.gender-option,
+.answer-option,
+.selection-option,
+.modal-link {
+  -webkit-appearance: none;
+  appearance: none;
+  color: black;        /* override native blue */
+  /* if you ever see a blue tap highlight, you can also add: */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── iOS Safari resets for selects ───────────────────────────────── */
+
+.form-select,
+.date-select,
+.year-select {
+  -webkit-appearance: none;
+  appearance: none;
+  /* keep your existing padding, background, etc. */
+  /* if you want your own arrow, add something like: */
+  /* background: #f1f1f1 url('../assets/arrow-down.svg') no-repeat right 2vw center; */
+  /* background-size: 1.5em; */
+}
+
+/* ── (optional) global reset, if you’d rather just override every select/button site‑wide ── */
+select, button {
+  -webkit-appearance: none;
+  appearance: none;
+  color: black;
+  -webkit-tap-highlight-color: transparent;
+}
