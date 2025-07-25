@@ -533,9 +533,6 @@ input:-webkit-autofill:focus {
 
 /* Responsive Adjustments */
 @media (max-width: 600px) {
-    .tryout-container {
-        min-height: calc(100vh - 14vh);
-    }
 
     .tryout-intro,
     .form-content,
