@@ -250,6 +250,19 @@
   background-color: #F6F7D2;
 }
 
+/* Override browser autofill yellow */
+input[type="text"].form-input.filled {
+    background-color: #F6F7D2 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #F6F7D2 inset !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #F6F7D2 inset !important;
+    -webkit-text-fill-color: black !important;
+}
+
 .option-icon {
     width: 8vw;
     height: 8vw;
