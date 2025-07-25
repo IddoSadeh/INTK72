@@ -12,13 +12,33 @@
         <!-- Main Content -->
         <main class="processing-content">
             <div class="processing-animation">
-                <video class="processing-video" autoplay muted loop playsinline webkit-playsinline>
-                    <source src="assets/loading .mp4" type="video/mp4">
+                <div class="video-container" id="video-container">
+                    <video 
+                        class="processing-video" 
+                        id="processing-video"
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline 
+                        webkit-playsinline
+                        preload="auto"
+                        data-autoplay="true">
+                        <source src="assets/loading .mp4" type="video/mp4">
+                    </video>
+                    <div class="video-play-overlay" id="video-overlay" onclick="playVideo()">
+                        <div class="play-button">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.7)"/>
+                                <polygon points="24,18 24,42 42,30" fill="white"/>
+                            </svg>
+                        </div>
+                        <p class="play-text">Tap to start processing</p>
+                    </div>
                     <!-- Fallback for browsers that don't support video -->
-                    <div class="processing-fallback">
+                    <div class="processing-fallback" id="fallback-spinner" style="display: none;">
                         <div class="loading-spinner"></div>
                     </div>
-                </video>
+                </div>
             </div>
             
             <div class="processing-text">
@@ -71,9 +91,84 @@
             }, processingTime);
         }
 
+        // Video autoplay handling for iOS
+        function checkAutoplay() {
+            const video = document.getElementById('processing-video');
+            const overlay = document.getElementById('video-overlay');
+            const container = document.getElementById('video-container');
+            const fallback = document.getElementById('fallback-spinner');
+
+            // Check if video is actually playing
+            const checkPlaying = () => {
+                return !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
+            };
+
+            // Function to show fallback spinner
+            const showFallback = () => {
+                video.style.display = 'none';
+                overlay.style.display = 'none';
+                fallback.style.display = 'flex';
+            };
+
+            // Check for video load errors
+            video.addEventListener('error', () => {
+                console.log('Video failed to load, showing fallback');
+                showFallback();
+            });
+
+            // Wait a bit for autoplay to potentially start
+            setTimeout(() => {
+                if (!checkPlaying()) {
+                    // Autoplay failed, show the overlay
+                    overlay.classList.add('show');
+                } else {
+                    // Autoplay worked, ensure overlay is hidden
+                    container.classList.add('playing');
+                }
+            }, 500);
+
+            // Listen for play events
+            video.addEventListener('play', () => {
+                container.classList.add('playing');
+                overlay.classList.remove('show');
+            });
+
+            video.addEventListener('pause', () => {
+                container.classList.remove('playing');
+                if (video.currentTime === 0) {
+                    overlay.classList.add('show');
+                }
+            });
+
+            // If video fails to load after a reasonable time, show fallback
+            setTimeout(() => {
+                if (video.readyState === 0) {
+                    console.log('Video not loading, showing fallback');
+                    showFallback();
+                }
+            }, 3000);
+        }
+
+        // Function to play video when overlay is clicked
+        function playVideo() {
+            const video = document.getElementById('processing-video');
+            const container = document.getElementById('video-container');
+            
+            video.play().then(() => {
+                container.classList.add('playing');
+            }).catch((error) => {
+                console.log('Video play failed:', error);
+                // Show fallback if video play fails
+                document.getElementById('fallback-spinner').style.display = 'flex';
+                video.style.display = 'none';
+                document.getElementById('video-overlay').style.display = 'none';
+            });
+        }
+
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             initializeUserData();
+            checkAutoplay();
             simulateProcessing();
             
             console.log('Processing page loaded. Current data:', window.intk72UserData);
@@ -98,15 +193,69 @@
             justify-content: center;
         }
 
-        .processing-video {
+        /* Video container styles */
+        .video-container {
+            position: relative;
+            display: inline-block;
             width: 900px;
             height: 900px;
+        }
+
+        .processing-video {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .video-play-overlay.show {
+            opacity: 1;
+        }
+
+        .play-button {
+            margin-bottom: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .play-text {
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Hide overlay when video is playing */
+        .video-container.playing .video-play-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         .processing-fallback {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -146,13 +295,17 @@
                 min-height: 50vh;
             }
             
-            .processing-video, .processing-fallback {
+            .video-container {
                 width: 250px;
                 height: 250px;
             }
             
             .processing-animation {
                 margin-bottom: 4vh;
+            }
+
+            .play-text {
+                font-size: 14px;
             }
         }
 
@@ -161,7 +314,7 @@
                 min-height: 70vh;
             }
             
-            .processing-video, .processing-fallback {
+            .video-container {
                 width: 350px;
                 height: 350px;
             }
