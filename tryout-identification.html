@@ -245,25 +245,21 @@
                     <div class="date-row">
                         <select id="birthMonth" name="birthMonth" class="form-select date-select" required>
                             <option value="">MM</option>
-                            <option value="01">01</option>
-                            <option value="01">02</option>
-                            <option value="01">03</option>
-                            <option value="01">04</option>
-                            <option value="01">05</option>
-                            <option value="01">06</option>
-                            <option value="01">07</option>
-                            <option value="01">08</option>
-                            <option value="01">09</option>
-                            <option value="01">10</option>
-                            <option value="01">11</option>
+                            <option value="1">01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                            <option value="5">05</option>
+                            <option value="6">06</option>
+                            <option value="7">07</option>
+                            <option value="8">08</option>
+                            <option value="9">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
                         <select id="birthDay" name="birthDay" class="form-select date-select" required>
                             <option value="">DD</option>
-                            <!-- days 01-31 -->
-                            <option value="01">01</option>
-                           
-                            <option value="31">31</option>
                         </select>
                         
                         <select id="birthYear" name="birthYear" class="form-select date-select year-select" required>
@@ -325,9 +321,11 @@ function initializeUserData() {
     window.intk72UserData = userData;
     return userData;
 }
+
 function saveUserData() {
     sessionStorage.setItem('intk72UserData', JSON.stringify(window.intk72UserData));
 }
+
 function setupGenderSelection() {
     const genderOptions = document.querySelectorAll('.gender-option');
     genderOptions.forEach(option => {
@@ -341,17 +339,22 @@ function setupGenderSelection() {
         });
     });
 }
+
 function checkFormCompletion() {
     const form = document.getElementById('identification-form');
     const formData = new FormData(form);
     const requiredFields = ['firstName','lastName','origin','birthDay','birthMonth','birthYear'];
     let allFilled = true;
+    
     requiredFields.forEach(field => {
         if (!formData.get(field)) allFilled = false;
     });
+    
     if (!window.intk72UserData.identification.gender) allFilled = false;
+    
     if (allFilled) saveCurrentData();
 }
+
 function saveCurrentData() {
     const form = document.getElementById('identification-form');
     const formData = new FormData(form);
@@ -366,6 +369,7 @@ function saveCurrentData() {
     };
     saveUserData();
 }
+
 function populateYears() {
     const yearSelect = document.getElementById('birthYear');
     const currentYear = new Date().getFullYear();
@@ -376,69 +380,109 @@ function populateYears() {
         yearSelect.appendChild(option);
     }
 }
+
 function populateDays() {
-    const daySel = document.getElementById('birthDay');
-    const monthVal = parseInt(document.getElementById('birthMonth').value, 10);
-    const yearVal = parseInt(document.getElementById('birthYear').value, 10);
-    if (!monthVal || !yearVal) {
-        daySel.innerHTML = '<option value=\"\">DD</option><option value=\"\">Enter Month</option>';
+    const daySelect = document.getElementById('birthDay');
+    const monthValue = parseInt(document.getElementById('birthMonth').value);
+    const yearValue = parseInt(document.getElementById('birthYear').value);
+    
+    // Store the current day value
+    const currentDay = daySelect.value;
+    
+    // Clear existing options
+    daySelect.innerHTML = '<option value="">DD</option>';
+    
+    if (!monthValue) {
         return;
     }
-    const daysInMonth = new Date(yearVal, monthVal, 0).getDate();
-    const prev = daySel.value;
-    let html = '<option value=\"\">DD</option>';
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dd = String(d).padStart(2,'0');
-        html += `<option value=\"${dd}\">${dd}</option>`;
+    
+    // Use current year if no year selected yet
+    const year = yearValue || new Date().getFullYear();
+    
+    // Calculate days in the selected month
+    const daysInMonth = new Date(year, monthValue, 0).getDate();
+    
+    // Populate day options
+    for (let day = 1; day <= daysInMonth; day++) {
+        const option = document.createElement('option');
+        const dayString = day.toString().padStart(2, '0');
+        option.value = dayString;
+        option.textContent = dayString;
+        daySelect.appendChild(option);
     }
-    daySel.innerHTML = html;
-    if (prev && +prev <= daysInMonth) daySel.value = prev;
+    
+    // Restore the previous selection if it's still valid
+    if (currentDay && parseInt(currentDay) <= daysInMonth) {
+        daySelect.value = currentDay;
+    }
 }
-document.getElementById('birthMonth').addEventListener('change', populateDays);
-document.getElementById('birthYear').addEventListener('change', populateDays);
+
 function loadSavedData() {
     const saved = window.intk72UserData.identification;
     if (saved) {
         if (saved.firstName)  document.getElementById('firstName').value   = saved.firstName;
         if (saved.lastName)   document.getElementById('lastName').value    = saved.lastName;
         if (saved.origin)     document.getElementById('origin').value      = saved.origin;
-        if (saved.birthMonth) document.getElementById('birthMonth').value = saved.birthMonth;
-        if (saved.birthYear)  document.getElementById('birthYear').value  = saved.birthYear;
-        populateDays();
+        if (saved.birthMonth) {
+            document.getElementById('birthMonth').value = saved.birthMonth;
+            populateDays(); // Populate days after setting month
+        }
+        if (saved.birthYear)  {
+            document.getElementById('birthYear').value  = saved.birthYear;
+            populateDays(); // Populate days after setting year
+        }
         if (saved.birthDay)   document.getElementById('birthDay').value    = saved.birthDay;
         if (saved.gender) {
-            const btn = document.querySelector(`[data-gender=\"${saved.gender}\"]`);
+            const btn = document.querySelector(`[data-gender="${saved.gender}"]`);
             if (btn) btn.classList.add('selected');
         }
     }
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeUserData();
     populateYears();
     setupGenderSelection();
+    
+    // Set up event listeners for date fields
+    document.getElementById('birthMonth').addEventListener('change', function() {
+        populateDays();
+        checkFormCompletion();
+    });
+    
+    document.getElementById('birthYear').addEventListener('change', function() {
+        populateDays();
+        checkFormCompletion();
+    });
+    
+    document.getElementById('birthDay').addEventListener('change', checkFormCompletion);
+    
     loadSavedData();
+    
     const inputs = document.querySelectorAll('input, select');
     inputs.forEach(input => {
         input.addEventListener('change', checkFormCompletion);
         input.addEventListener('input', checkFormCompletion);
     });
+    
     document.getElementById('continue-btn').addEventListener('click', function(){
         saveCurrentData();
     });
-      const fields = document.querySelectorAll('.form-input, .form-select');
-  fields.forEach(field => {
-    const toggleFilled = () => {
-      if (field.value && field.value !== '') {
-        field.classList.add('filled');
-      } else {
-        field.classList.remove('filled');
-      }
-    };
-    field.addEventListener('input',  toggleFilled);
-    field.addEventListener('change', toggleFilled);
-    // initialize state on load
-    toggleFilled();
-  });
+    
+    const fields = document.querySelectorAll('.form-input, .form-select');
+    fields.forEach(field => {
+        const toggleFilled = () => {
+            if (field.value && field.value !== '') {
+                field.classList.add('filled');
+            } else {
+                field.classList.remove('filled');
+            }
+        };
+        field.addEventListener('input',  toggleFilled);
+        field.addEventListener('change', toggleFilled);
+        // initialize state on load
+        toggleFilled();
+    });
 });
 </script>
 
