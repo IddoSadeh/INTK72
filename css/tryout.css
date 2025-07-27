@@ -138,6 +138,7 @@
   padding: 1.5vh 2.5vw;    
   background-color: #f1f1f1;
   border: none;
+  border-radius: 0;
   font-family: 'Inter', sans-serif;
   font-size: 2vw;
   font-weight: 600;
@@ -176,6 +177,7 @@
   flex: 1;
   background-color: #f1f1f1;
   border: none;
+  border-radius: 0;
   padding: 1.5vh 2.5vw;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
