@@ -46,7 +46,7 @@
     font-size: 2vw;
     font-weight: 500;
     line-height: 1.2;
-    margin: 4vh 6vw 1vh 0;
+    margin: 2vh 6vw 1vh 0;
     color: #666;
 }
 .grid-visual {
@@ -56,6 +56,7 @@
 }
 .grid-video {
     width: 50vw;
+    background-color: white;
 }
 
 .summary-text {
