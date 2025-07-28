@@ -373,6 +373,6 @@
         async function runWorkflow() { resetCanvas(); clearCanvas(); drawGrid(); originalShapes = await getPolygons(); drawPolys(originalShapes.map(s => s.pts)); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(originalShapes.map(s => s.pts)); offsetPolys = []; originalShapes.forEach(s => offsetPolys.push(...computeOffset(s.pts, s.isCurved))); drawPolys(offsetPolys, { strokeStyle: '#f00' }); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(offsetPolys, { strokeStyle: '#f00' }); await new Promise(r => setTimeout(r, 500)); outerPoly = keepLargest(computeUnion(offsetPolys)); clearCanvas(); drawPolys(outerPoly); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(outerPoly, { lineWidth: 6 }); }
         document.addEventListener('DOMContentLoaded', () => { initializeUserData(); generateUserNumber(); populateUserDetails(); generatePreferencesSummary(); runWorkflow(); });
     </script>
+    <script src="/js/idle.js"></script>
 </body>
-
 </html>
