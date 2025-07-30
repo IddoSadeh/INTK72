@@ -101,7 +101,7 @@ main p {
 
 /*––––– Footer –––––*/
 footer {
-
+    position: sticky;
     bottom: 0;
     background: white;
     border-top: 0.1vh solid #e0e0e0;
