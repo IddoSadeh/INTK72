@@ -9,12 +9,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+  height: 100%;
+}
 
 body {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
     background: white;
     color: black;
-    min-height: 100vh;
     max-width: 90vw;              /* Mobile cap */
     display: flex;
     flex-direction: column;
@@ -101,12 +103,12 @@ main p {
 
 /*––––– Footer –––––*/
 footer {
-    position: sticky;
+
     bottom: 0;
     background: white;
     border-top: 0.1vh solid #e0e0e0;
     padding: 2vh 0;
-    width: 100vw; /* ensure footer spans full viewport width */
+    width: 100vw; 
     overflow-x: hidden;
 }
 
