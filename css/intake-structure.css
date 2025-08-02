@@ -94,7 +94,7 @@
 /* Mobile adjustments */
 @media (max-width: 600px) {
     .gray-content {
-        padding: 0 4vw;
+        padding: 0 8vw;
     }
     .process-item {
         gap: 4vw;

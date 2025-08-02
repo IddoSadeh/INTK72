@@ -1,296 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pattern System</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/pattern-system.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake Structure</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/intake-structure.css">
 </head>
 <body>
-  <!-- Sticky Header (unchanged) -->
-  <header class="sticky-header">
-    <div class="header-content">
-      <a href="system-logic.html" class="back-arrow">
-        <img src="assets/arrow-left.svg" alt="Back" class="arrow-icon">
-      </a>
-      <h1 class="page-title">INTAKE STRUCTURE</h1>
-      <a href="question-framework.html" class="forward-arrow">
-        <img src="assets/arrow-right.svg" alt="Forward" class="arrow-icon">
-      </a>
-    </div>
-  </header>
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="header-content">
+            <a href="system-logic.html" class="back-arrow">
+                <img src="assets/arrow-left.svg" alt="Back" />
+            </a>
+            <h1 class="page-title">INTAKE STRUCTURE</h1>
+            <a href="question-framework.html" class="forward-arrow">
+                <img src="assets/arrow-right.svg" alt="Forward" />
+            </a>
+        </div>
+    </header>
 
-  <!-- Main Content Section -->
-  <div class="main-content">
-    <div class="content-text">
-      <p>
-        Each user's 9 responses are mapped onto a 3×3 grid. This grid reflects three meals across three days and encodes the structural pattern of intake.
-      </p>
-    </div>
-  </div>
-
-  <!-- Grid Demo Section -->
-  <div class="grid-demo-section">
-    <div class="grid-demo-container">
-      <div class="grid-text">
-        <h2 class="demo-title">Real-time generation of a visual intake shape.</h2>
-        <p class="demo-description">
-          This example shows the main forms assigned to each question and does not represent a specific user profile.
-        </p>
-      </div>
-      <div class="grid-visual">
-        <div class="video-container" id="video-container">
-          <video 
-            class="grid-video" 
-            id="grid-video"
-            playsinline 
-            webkit-playsinline
-            autoplay 
-            muted 
-            loop 
-            preload="auto"
-            data-autoplay="true">
-            <source src="assets/shapes building .mp4" type="video/mp4">
-          </video>
-          <div class="video-play-overlay" id="video-overlay" onclick="playVideo()">
-            <div class="play-button">
-              <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                <circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.7)"/>
-                <polygon points="24,18 24,42 42,30" fill="white"/>
-              </svg>
+    <!-- Main Content Section -->
+    <div class="main-content">
+            <div class="content-text">
+                <p>
+                    The system is structured around three fixed intake points. Repeated consistently over a 72-hour emergency period. Each point is pre-timed to preserve a basic daily rhythm, regardless of external conditions.
+                </p>
             </div>
-            <p class="play-text">Tap to play video</p>
-          </div>
+    </div>
+
+    <!-- Gray Section -->
+    <div class="gray-section">
+        <div class="gray-content">
+            <div class="section-header">
+                <span class="section-label">How it works?</span>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="process-item">
+                <span class="item-number">1</span>
+                <div class="item-content">
+                    <h3 class="item-title">REGISTRATION</h3>
+                    <p class="item-text">The user creates an account within the system to initiate the intake configuration process.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 2 -->
+            <div class="process-item">
+                <span class="item-number">2</span>
+                <div class="item-content">
+                    <h3 class="item-title">INITIAL SETTINGS</h3>
+                    <p class="item-text">Basic information is entered, including age range, origin, and any relevant dietary restrictions such as allergies.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 3 -->
+            <div class="process-item">
+                <span class="item-number">3</span>
+                <div class="item-content">
+                    <h3 class="item-title">ROUTINE DEFINITION</h3>
+                    <p class="item-text">A short sequence of questions is answered to define the user's eating routine across three days.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 4 -->
+            <div class="process-item">
+                <span class="item-number">4</span>
+                <div class="item-content">
+                    <h3 class="item-title">SYSTEM CALCULATION</h3>
+                    <p class="item-text">The system processes the data to generate a full 72-hour intake structure based on stable conditions.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 5 -->
+            <div class="process-item">
+                <span class="item-number">5</span>
+                <div class="item-content">
+                    <h3 class="item-title">PATTERN ASSIGNMENT</h3>
+                    <p class="item-text">The user receives a unique shape that encodes their intake profile. This visual pattern reflects their eating structure and becomes a reference for their emergency configuration.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 6 -->
+            <div class="process-item">
+                <span class="item-number">6</span>
+                <div class="item-content">
+                    <h3 class="item-title">FAMILY EXTENSION</h3>
+                    <p class="item-text">Additional users can be added under the same account. Each receives their own intake configuration and visual pattern.</p>
+                </div>
+            </div>
+            <div class="divider"></div>
+
+            <!-- Step 7 -->
+            <div class="process-item">
+                <span class="item-number">7</span>
+                <div class="item-content">
+                    <h3 class="item-title">EMERGENCY DELIVERY</h3>
+                    <p class="item-text">Once activated, pre-packed kits are shipped to the user's registered address for emergency use.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="summary-text">
-      <p>
-        Individual answers combine to create a single intake shape. A compact visual summary of the user's eating structure, based on behavioral input.
-      </p>
-    </div>
-  </div>
-
-  <!-- Gray Section with Level Guide -->
-  <div class="gray-section">
-    <div class="gray-content">
-      <div class="section-header">
-        <span class="section-label">Visual Mapping Process</span>
-      </div>
-
-      <div class="level-container">
-        <div class="level-visual">
-          <img
-            id="level-image"
-            src="assets/levels/level-1.svg"
-            alt="LEVEL 1"
-            class="level-svg"
-          >
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <img src="assets/logo.svg" alt="INTK72 Logo" class="logo-icon">
+            </div>
+            <p class="footer-text">
+              Developed during stable conditions, this system pre-defines meal timing, structure, and nutritional balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and reducing stress through pre-established logic. Established 2025.
+            </p>
         </div>
-
-        <div class="level-content">
-          <div class="level-header">
-            <h3 id="level-title" class="level-title">LEVEL 1</h3>
-            <button id="level-arrow" class="level-arrow" onclick="nextLevel()">
-              <img
-                id="level-arrow-icon"
-                src="assets/arrow-right2.svg"
-                alt="Next Level"
-                class="arrow-icon"
-              >
-            </button>
-          </div>
-          <p id="level-description" class="level-description">
-            All selected forms (Q1–Q9) are positioned on a predefined 3×3 intake grid according to question order and response category.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="logo">
-        <img src="assets/logo.svg" alt="INTK72 Logo" class="logo-icon">
-      </div>
-      <p class="footer-text">
-        Developed during stable conditions, this system pre‑defines meal timing, structure, and nutritional balance to ensure continuity when access is limited, disrupted, or uncertain. Preserving routine and reducing stress through pre‑established logic. Established 2025.
-      </p>
-    </div>
-  </footer>
-
-  <style>
-    /* Video container styles */
-    .video-container {
-      position: relative;
-      display: inline-block;
-    }
-
-    .video-play-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      z-index: 10;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      border-radius: 4px;
-    }
-
-    .video-play-overlay.show {
-      opacity: 1;
-    }
-
-    .play-button {
-      margin-bottom: 10px;
-      transition: transform 0.2s ease;
-    }
-
-    .play-button:hover {
-      transform: scale(1.1);
-    }
-
-    .play-text {
-      color: white;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      margin: 0;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-
-    /* Hide overlay when video is playing */
-    .video-container.playing .video-play-overlay {
-      opacity: 0;
-      pointer-events: none;
-    }
-  </style>
-
-  <script>
-    let currentLevel = 1;
-    const maxLevels = 5;
-
-    const levelData = {
-      1: {
-        title: "LEVEL 1",
-        description:
-          "All selected forms (Q1–Q9) are positioned on a predefined 3×3 intake grid according to question order and response category.",
-        image: "assets/levels/level-1.svg"
-      },
-      2: {
-        title: "LEVEL 2",
-        description:
-          "The grid is removed, isolating the raw visual composition of the selected intake forms.",
-        image: "assets/levels/level-2.svg"
-      },
-      3: {
-        title: "LEVEL 3",
-        description:
-          "A perimeter is generated around each individual form, defining the outline of each mapped response.",
-        image: "assets/levels/level-3.svg"
-      },
-      4: {
-        title: "LEVEL 4",
-        description:
-          "All perimeters are merged into a single, continuous boundary, unifying the structure.",
-        image: "assets/levels/level-4.svg"
-      },
-      5: {
-        title: "LEVEL 5",
-        description:
-          "The system returns to its starting point, ready to visualize a new intake pattern.",
-        image: "assets/levels/level-5.svg"
-      }
-    };
-
-    function nextLevel() {
-      currentLevel = currentLevel < maxLevels ? currentLevel + 1 : 1;
-      updateLevel();
-    }
-
-    function updateLevel() {
-      const data = levelData[currentLevel];
-      document.getElementById("level-title").textContent = data.title;
-      document.getElementById("level-description").textContent = data.description;
-
-      const levelImg = document.getElementById("level-image");
-      levelImg.src = data.image;
-      levelImg.alt = data.title;
-
-      const arrowIcon = document.getElementById("level-arrow-icon");
-      if (currentLevel === maxLevels) {
-        arrowIcon.src = "assets/arrow-curved.svg";
-        arrowIcon.alt = "Restart Levels";
-      } else {
-        arrowIcon.src = "assets/arrow-right2.svg";
-        arrowIcon.alt = "Next Level";
-      }
-    }
-
-    // Video autoplay handling for iOS
-    function checkAutoplay() {
-      const video = document.getElementById('grid-video');
-      const overlay = document.getElementById('video-overlay');
-      const container = document.getElementById('video-container');
-
-      // Check if video is actually playing
-      const checkPlaying = () => {
-        return !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
-      };
-
-      // Wait a bit for autoplay to potentially start
-      setTimeout(() => {
-        if (!checkPlaying()) {
-          // Autoplay failed, show the overlay
-          overlay.classList.add('show');
-        } else {
-          // Autoplay worked, ensure overlay is hidden
-          container.classList.add('playing');
-        }
-      }, 500);
-
-      // Listen for play events
-      video.addEventListener('play', () => {
-        container.classList.add('playing');
-        overlay.classList.remove('show');
-      });
-
-      video.addEventListener('pause', () => {
-        container.classList.remove('playing');
-        if (video.currentTime === 0) {
-          overlay.classList.add('show');
-        }
-      });
-    }
-
-    // Function to play video when overlay is clicked
-    function playVideo() {
-      const video = document.getElementById('grid-video');
-      const container = document.getElementById('video-container');
-      
-      video.play().then(() => {
-        container.classList.add('playing');
-      }).catch((error) => {
-        console.log('Video play failed:', error);
-      });
-    }
-
-    // Initialize on load
-    document.addEventListener('DOMContentLoaded', () => {
-      updateLevel();
-      checkAutoplay();
-    });
-  </script>
-  <script src="/js/idle.js"></script>
+    </footer>
 </body>
 </html>

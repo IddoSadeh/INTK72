@@ -108,7 +108,7 @@ footer {
     background: white;
     border-top: 0.1vh solid #e0e0e0;
     padding: 2vh 0 5vh;
-    width: 100vw; 
+    width: 100vw;
     overflow-x: hidden;
 }
 
@@ -118,6 +118,7 @@ footer {
     display: flex;
     align-items: flex-start;
     gap: 1em;
+    
 }
 
 .logo-icon {
