@@ -148,11 +148,11 @@
 /* iPhone (small screens) */
 @media (max-width: 600px) {
     .main-content {
-        padding: 2vh 2vw 0 2vw;
+        padding: 2vh 2vw 0 8vw;
         max-width: 98vw;
     }
     .grid-demo-section {
-        padding: 0 2vw 4vh 2vw;
+        padding: 0 2vw 4vh 8vw;
     }
     .grid-demo-container {
         flex-direction: column;

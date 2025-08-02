@@ -227,7 +227,7 @@ body.modal-open {
 /* Small phones */
 @media (max-width: 600px) {
     .gray-content {
-        padding: 0 4vw;
+        padding: 0 8vw;
     }
     .section-label {
         font-size: 2vh;
@@ -243,7 +243,7 @@ body.modal-open {
 /* Tablets (up to 768px) */
 @media (max-width: 768px) {
     .shape-row {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 6vw;
     }
     .category-item {
