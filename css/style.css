@@ -9,10 +9,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
+
+html,body {
   height: 100%;
 }
-
 body {
     font-family: 'FormaTextTest', 'Inter', sans-serif;
     background: white;
@@ -107,7 +107,7 @@ footer {
     bottom: 0;
     background: white;
     border-top: 0.1vh solid #e0e0e0;
-    padding: 2vh 0;
+    padding: 2vh 0 5vh;
     width: 100vw; 
     overflow-x: hidden;
 }
@@ -147,7 +147,7 @@ footer {
         padding-left: 8vw;
     }
     .container {
-        padding: 10vh 3vw 2vh 8vw;
+        padding: 10vh 3vw 0vh 8vw;
     }
     h1 {
         font-size: 7vh;

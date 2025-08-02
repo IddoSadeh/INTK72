@@ -1,6 +1,7 @@
 /* System Logic Page Responsive Styles (viewport-based, no clamps) */
 
 /* Base (mobile-first) */
+
 .main-content {
     max-width: 95vw;
     padding: 0vh 3vw 2vh 9vw;

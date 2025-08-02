@@ -1,5 +1,7 @@
 /* Tryout Flow Styles */
-
+footer{
+    padding-bottom: 2vh;
+}
 /* Container modifications for proper flexbox layout */
 .back-arrow img,
 .forward-arrow img {
@@ -35,7 +37,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1vh;
+    margin-bottom: 0vh;
     margin-top: auto;
 }
 

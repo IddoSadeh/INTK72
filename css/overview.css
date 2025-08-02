@@ -1,5 +1,7 @@
 /* Overview page specific styles */
-
+footer{
+    padding-bottom: 2vh;
+}
 .overview-content {
     padding-top: 0vh;
 }

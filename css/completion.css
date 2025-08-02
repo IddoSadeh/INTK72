@@ -1,5 +1,7 @@
 /* Completion Page Styles */
-
+footer{
+    padding-bottom: 2vh;
+}
 /* Top Navigation */
 .container {
     width: 90vw;
