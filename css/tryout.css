@@ -757,3 +757,10 @@ select, button {
   color: black;
   -webkit-tap-highlight-color: transparent;
 }
+
+
+    @media (max-width: 768px) {
+       .question-title{
+        font-size: 3vw;
+       }
+    }
