@@ -268,114 +268,185 @@
     </style>
 
 
-    <script>
-        // Initialization
-        function initializeUserData() {
-            let userData = sessionStorage.getItem('intk72UserData');
-            if (!userData) {
-                userData = {
-                    identification: {},
-                    consumptionLimits: { dietary: [], allergies: [] },
-                    answers: {}
-                };
-            } else {
-                userData = JSON.parse(userData);
-            }
-            window.intk72UserData = userData;
-            return userData;
+<script>
+    // Initialization
+    function initializeUserData() {
+        let userData = sessionStorage.getItem('intk72UserData');
+        if (!userData) {
+            userData = {
+                identification: {},
+                consumptionLimits: { dietary: [], allergies: [] },
+                answers: {}
+            };
+        } else {
+            userData = JSON.parse(userData);
+        }
+        window.intk72UserData = userData;
+        return userData;
+    }
+
+    // Generate random user number
+    function generateUserNumber() {
+        // Generate a random 6-digit number
+        const userNumber = Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('user-number-value').textContent = userNumber;
+    }
+
+    // User Details
+    function calculateAge(year, month, day) {
+        if (!year || !month || !day) return null;
+        const birthDate = new Date(year, month - 1, day);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+        return age;
+    }
+
+    function formatDate(day, month, year) {
+        if (!day || !month || !year) return 'Not provided';
+        return `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+    }
+
+    function populateUserDetails() {
+        const data = window.intk72UserData.identification;
+        const age = calculateAge(data.birthYear, data.birthMonth, data.birthDay);
+        const fullName = [data.firstName, data.lastName].filter(Boolean).join(' ');
+        document.getElementById('user-details').innerHTML = `
+            <div><u>Full Name:</u> ${fullName || 'Not provided'}</div>
+            <div><u>Age:</u> ${age || 'Not provided'}</div>
+            <div class="full-width"><u>Date of Birth:</u> ${formatDate(data.birthDay, data.birthMonth, data.birthYear)}</div>
+            <div><u>Gender:</u> ${data.gender ? data.gender.charAt(0).toUpperCase() + data.gender.slice(1) : 'Not provided'}</div>
+            <div><u>Origin:</u> ${data.origin || 'Not provided'}</div>
+        `;
+    }
+
+    // Updated Preferences Logic
+    function generatePreferencesSummary() {
+        const ans = window.intk72UserData.answers;
+        const userData = window.intk72UserData.identification;
+
+        // Lifestyle: Healthy, Standard, Snacker
+        let lifestyle = 'Standard';
+        if (ans.q1?.answer === '1') lifestyle = 'Healthy';
+        else if (ans.q1?.answer === '3') lifestyle = 'Snacker';
+
+        // Meal: Routine, Random, Flexible
+        let meal = 'Flexible';
+        if (ans.q6?.answer === '1') meal = 'Routine';
+        else if (ans.q6?.answer === '4') meal = 'Random';
+
+        // Flavor: Homestyle, Junk, Mixed
+        let flavor = 'Mixed';
+        if (ans.q9?.answer === '1') flavor = 'Homestyle';
+        else if (ans.q9?.answer === '2') flavor = 'Junk';
+
+        // Priority Status based on age
+        let priority = 'Standard';
+        const age = calculateAge(userData.birthYear, userData.birthMonth, userData.birthDay);
+        if (age !== null) {
+            if (age >= 65) priority = 'Elderly';
+            else if (age >= 3 && age <= 14) priority = 'Child';
+            else priority = 'Standard';
         }
 
-        // Generate random user number
-        function generateUserNumber() {
-            // Generate a random 6-digit number
-            const userNumber = Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('user-number-value').textContent = userNumber;
+        document.getElementById('preference-items').innerHTML = `
+            <div class="preference-item"><u>Lifestyle:</u> ${lifestyle}</div>
+            <div class="preference-item"><u>Meal:</u> ${meal}</div>
+            <div class="preference-item"><u>Flavor:</u> ${flavor}</div>
+            <div class="preference-item"><u>Priority Status:</u> ${priority}</div>
+        `;
+    }
+
+    // Pattern Offset Workflow
+    const GRID = 3, CELL = 120, MM_TO_PX = 3.78, OFFSET_MM = 3, SF = 200;
+    const DELTA = Math.round(OFFSET_MM * MM_TO_PX * SF), CANVAS_MARGIN = OFFSET_MM * MM_TO_PX + 10;
+    const SAMPLE_STEP_PX = 1, ARC_TOLERANCE = 0.25, MITER_LIMIT = 1000;
+    let originalShapes = [], offsetPolys = [], outerPoly = [];
+    const canvas = document.getElementById('offset-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resetCanvas() { const sz = GRID * CELL + CANVAS_MARGIN * 2; canvas.width = sz; canvas.height = sz; ctx.setTransform(1, 0, 0, 1, CANVAS_MARGIN, CANVAS_MARGIN); }
+    function clearCanvas() { ctx.clearRect(-CANVAS_MARGIN, -CANVAS_MARGIN, canvas.width, canvas.height); }
+    function drawGrid() { ctx.save(); ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1; for (let i = 0; i <= GRID; i++) { const p = i * CELL; ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, GRID * CELL); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, p); ctx.lineTo(GRID * CELL, p); ctx.stroke(); } ctx.restore(); }
+    function drawPolys(polys, opts = {}) { const { s = '#000', lw = 1 } = opts; ctx.beginPath(); polys.forEach(poly => { poly.forEach((pt, i) => { const x = pt.X / SF, y = pt.Y / SF; i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }); ctx.closePath(); }); ctx.strokeStyle = opts.strokeStyle || s; ctx.lineWidth = opts.lineWidth || lw; ctx.stroke(); }
+
+    async function getPolygons() {
+        const shapes = [];
+        const ans = window.intk72UserData.answers || {};
+
+        for (const [q, { shape }] of Object.entries(ans)) {
+            if (!shape) continue;
+
+            const idx = parseInt(q.slice(1)) - 1,
+                  col = idx % GRID,
+                  ox = col * CELL,
+                  oy = Math.floor(idx / GRID) * CELL;
+
+            const svg = await fetch(`assets/shapes/${shape}.svg`).then(r => r.text());
+            const doc = new DOMParser().parseFromString(svg, 'image/svg+xml');
+            const [vx, vy, vw, vh] = doc.querySelector('svg').getAttribute('viewBox').split(' ').map(Number);
+
+            const sx = CELL / vw, sy = CELL / vh;
+
+            // *** ONLY CHANGE: leave a gap on the RIGHT of the RIGHTMOST column ***
+            const isRightCol = (col === GRID - 1);
+            const extraRight = isRightCol ? (DELTA / SF) : 0; // equals OFFSET_MM*MM_TO_PX in canvas px
+
+            doc.querySelectorAll('path').forEach(path => {
+                const pts = [];
+                const len = path.getTotalLength();
+                for (let d = 0; d <= len; d += SAMPLE_STEP_PX) {
+                    const p = path.getPointAtLength(d);
+                    const xCanvas = ((p.x - vx) * sx + ox) - extraRight; // shift left only in rightmost cells
+                    const yCanvas = ((p.y - vy) * sy + oy);
+                    pts.push({ X: Math.round(xCanvas * SF), Y: Math.round(yCanvas * SF) });
+                }
+                let curved = false;
+                if (path.getPathData) path.getPathData().forEach(c => { if (['C', 'Q', 'A'].includes(c.type)) curved = true; });
+                shapes.push({ pts, isCurved: curved });
+            });
         }
+        return shapes;
+    }
 
-        // User Details
-        function calculateAge(year, month, day) {
-            if (!year || !month || !day) return null;
-            const birthDate = new Date(year, month - 1, day);
-            const today = new Date();
-            let age = today.getFullYear() - birthDate.getFullYear();
-            const m = today.getMonth() - birthDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
-            return age;
-        }
+    function computeOffset(poly, curved) {
+        const co = new ClipperLib.ClipperOffset(ARC_TOLERANCE, MITER_LIMIT);
+        co.AddPath(poly, curved ? ClipperLib.JoinType.jtRound : ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+        const out = new ClipperLib.Paths();
+        co.Execute(out, DELTA);
+        return out;
+    }
+    function computeUnion(ps) { const c = new ClipperLib.Clipper(); ps.forEach(p => c.AddPath(p, ClipperLib.PolyType.ptSubject, true)); const o = new ClipperLib.Paths(); c.Execute(ClipperLib.ClipType.ctUnion, o, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero); return o; }
+    function keepLargest(ps) { if (!ps.length) return []; return [ps.reduce((b, c) => Math.abs(ClipperLib.Clipper.Area(c)) > Math.abs(ClipperLib.Clipper.Area(b)) ? c : b, ps[0])]; }
 
-        function formatDate(day, month, year) {
-            if (!day || !month || !year) return 'Not provided';
-            return `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
-        }
+    async function runWorkflow() {
+        resetCanvas(); clearCanvas(); drawGrid();
+        originalShapes = await getPolygons();
+        drawPolys(originalShapes.map(s => s.pts));
+        await new Promise(r => setTimeout(r, 500));
+        clearCanvas(); drawPolys(originalShapes.map(s => s.pts));
+        offsetPolys = [];
+        originalShapes.forEach(s => offsetPolys.push(...computeOffset(s.pts, s.isCurved)));
+        drawPolys(offsetPolys, { strokeStyle: '#f00' });
+        await new Promise(r => setTimeout(r, 500));
+        clearCanvas(); drawPolys(offsetPolys, { strokeStyle: '#f00' });
+        await new Promise(r => setTimeout(r, 500));
+        outerPoly = keepLargest(computeUnion(offsetPolys));
+        clearCanvas(); drawPolys(outerPoly);
+        await new Promise(r => setTimeout(r, 500));
+        clearCanvas(); drawPolys(outerPoly, { lineWidth: 6 });
+    }
 
-        function populateUserDetails() {
-            const data = window.intk72UserData.identification;
-            const age = calculateAge(data.birthYear, data.birthMonth, data.birthDay);
-            const fullName = [data.firstName, data.lastName].filter(Boolean).join(' ');
-            document.getElementById('user-details').innerHTML = `
-                <div><u>Full Name:</u> ${fullName || 'Not provided'}</div>
-                <div><u>Age:</u> ${age || 'Not provided'}</div>
-                <div class="full-width"><u>Date of Birth:</u> ${formatDate(data.birthDay, data.birthMonth, data.birthYear)}</div>
-                <div><u>Gender:</u> ${data.gender ? data.gender.charAt(0).toUpperCase() + data.gender.slice(1) : 'Not provided'}</div>
-                <div><u>Origin:</u> ${data.origin || 'Not provided'}</div>
-            `;
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeUserData();
+        generateUserNumber();
+        populateUserDetails();
+        generatePreferencesSummary();
+        runWorkflow();
+    });
+</script>
 
-        // Updated Preferences Logic
-        function generatePreferencesSummary() {
-            const ans = window.intk72UserData.answers;
-            const userData = window.intk72UserData.identification;
-
-            // Lifestyle: Healthy, Standard, Snacker
-            let lifestyle = 'Standard';
-            if (ans.q1?.answer === '1') lifestyle = 'Healthy';
-            else if (ans.q1?.answer === '3') lifestyle = 'Snacker';
-
-            // Meal: Routine, Random, Flexible
-            let meal = 'Flexible';
-            if (ans.q6?.answer === '1') meal = 'Routine';
-            else if (ans.q6?.answer === '4') meal = 'Random';
-
-            // Flavor: Homestyle, Junk, Mixed
-            let flavor = 'Mixed';
-            if (ans.q9?.answer === '1') flavor = 'Homestyle';
-            else if (ans.q9?.answer === '2') flavor = 'Junk';
-
-            // Priority Status based on age
-            let priority = 'Standard';
-            const age = calculateAge(userData.birthYear, userData.birthMonth, userData.birthDay);
-            if (age !== null) {
-                if (age >= 65) priority = 'Elderly';
-                else if (age >= 3 && age <= 14) priority = 'Child';
-                else priority = 'Standard';
-            }
-
-            document.getElementById('preference-items').innerHTML = `
-                <div class="preference-item"><u>Lifestyle:</u> ${lifestyle}</div>
-                <div class="preference-item"><u>Meal:</u> ${meal}</div>
-                <div class="preference-item"><u>Flavor:</u> ${flavor}</div>
-                <div class="preference-item"><u>Priority Status:</u> ${priority}</div>
-            `;
-        }
-
-        // Pattern Offset Workflow
-        const GRID = 3, CELL = 120, MM_TO_PX = 3.78, OFFSET_MM = 3, SF = 200;
-        const DELTA = Math.round(OFFSET_MM * MM_TO_PX * SF), CANVAS_MARGIN = OFFSET_MM * MM_TO_PX + 10;
-        const SAMPLE_STEP_PX = 1, ARC_TOLERANCE = 0.25, MITER_LIMIT = 1000;
-        let originalShapes = [], offsetPolys = [], outerPoly = [];
-        const canvas = document.getElementById('offset-canvas');
-        const ctx = canvas.getContext('2d');
-        function resetCanvas() { const sz = GRID * CELL + CANVAS_MARGIN * 2; canvas.width = sz; canvas.height = sz; ctx.setTransform(1, 0, 0, 1, CANVAS_MARGIN, CANVAS_MARGIN); }
-        function clearCanvas() { ctx.clearRect(-CANVAS_MARGIN, -CANVAS_MARGIN, canvas.width, canvas.height); }
-        function drawGrid() { ctx.save(); ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1; for (let i = 0; i <= GRID; i++) { const p = i * CELL; ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, GRID * CELL); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, p); ctx.lineTo(GRID * CELL, p); ctx.stroke(); } ctx.restore(); }
-        function drawPolys(polys, opts = {}) { const { s = '#000', lw = 1 } = opts; ctx.beginPath(); polys.forEach(poly => { poly.forEach((pt, i) => { const x = pt.X / SF, y = pt.Y / SF; i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }); ctx.closePath(); }); ctx.strokeStyle = opts.strokeStyle || s; ctx.lineWidth = opts.lineWidth || lw; ctx.stroke(); }
-        async function getPolygons() { const shapes = []; const ans = window.intk72UserData.answers || {}; for (const [q, { shape }] of Object.entries(ans)) { if (!shape) continue; const idx = parseInt(q.slice(1)) - 1, ox = (idx % GRID) * CELL, oy = Math.floor(idx / GRID) * CELL; const svg = await fetch(`assets/shapes/${shape}.svg`).then(r => r.text()); const doc = new DOMParser().parseFromString(svg, 'image/svg+xml'); const [vx, vy, vw, vh] = doc.querySelector('svg').getAttribute('viewBox').split(' ').map(Number); const sx = CELL / vw, sy = CELL / vh; doc.querySelectorAll('path').forEach(path => { const pts = []; const len = path.getTotalLength(); for (let d = 0; d <= len; d += SAMPLE_STEP_PX) { const p = path.getPointAtLength(d); pts.push({ X: Math.round(((p.x - vx) * sx + ox) * SF), Y: Math.round(((p.y - vy) * sy + oy) * SF) }); } let curved = false; if (path.getPathData) path.getPathData().forEach(c => { if (['C', 'Q', 'A'].includes(c.type)) curved = true; }); shapes.push({ pts, isCurved: curved }); }); } return shapes; }
-        function computeOffset(poly, curved) { const co = new ClipperLib.ClipperOffset(ARC_TOLERANCE, MITER_LIMIT); co.AddPath(poly, curved ? ClipperLib.JoinType.jtRound : ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon); const out = new ClipperLib.Paths(); co.Execute(out, DELTA); return out; }
-        function computeUnion(ps) { const c = new ClipperLib.Clipper(); ps.forEach(p => c.AddPath(p, ClipperLib.PolyType.ptSubject, true)); const o = new ClipperLib.Paths(); c.Execute(ClipperLib.ClipType.ctUnion, o, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero); return o; }
-        function keepLargest(ps) { if (!ps.length) return []; return [ps.reduce((b, c) => Math.abs(ClipperLib.Clipper.Area(c)) > Math.abs(ClipperLib.Clipper.Area(b)) ? c : b, ps[0])]; }
-        async function runWorkflow() { resetCanvas(); clearCanvas(); drawGrid(); originalShapes = await getPolygons(); drawPolys(originalShapes.map(s => s.pts)); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(originalShapes.map(s => s.pts)); offsetPolys = []; originalShapes.forEach(s => offsetPolys.push(...computeOffset(s.pts, s.isCurved))); drawPolys(offsetPolys, { strokeStyle: '#f00' }); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(offsetPolys, { strokeStyle: '#f00' }); await new Promise(r => setTimeout(r, 500)); outerPoly = keepLargest(computeUnion(offsetPolys)); clearCanvas(); drawPolys(outerPoly); await new Promise(r => setTimeout(r, 500)); clearCanvas(); drawPolys(outerPoly, { lineWidth: 6 }); }
-        document.addEventListener('DOMContentLoaded', () => { initializeUserData(); generateUserNumber(); populateUserDetails(); generatePreferencesSummary(); runWorkflow(); });
-    </script>
     <script src="/js/idle.js"></script>
 </body>
 </html>
